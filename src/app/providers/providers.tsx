@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { ThemeProvider } from '@mui/material';
 import { theme } from '@/app/assests/theme';
 import { Provider } from 'react-redux';
@@ -11,7 +11,7 @@ function Providers( { children }: { children: React.ReactNode }) {
                 {children}
             </Provider>
         </ThemeProvider>
-    )
+    );
 }
 
 export default Providers;
