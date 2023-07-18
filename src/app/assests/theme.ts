@@ -17,5 +17,28 @@ export const theme = createTheme({
    main: '#F39C12',
    contrastText: '#FFFFFF'
   },
- }
+ },
+ typography: {
+  // fontFamily: 'Open Sans, sans-serif', need to talk with UX
+
+  body1: {
+   fontSize: '16px',
+  },
+
+  body2: {
+   fontSize: '14px',
+  },
+  subtitle2: {
+   fontSize: '12px',
+  }
+ },
+ components: {
+  MuiTypography: {
+   styleOverrides: {
+    root: {
+     fontWeight: '400'
+    },
+   },
+  },
+ },
 });
