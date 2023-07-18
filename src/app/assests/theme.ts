@@ -52,3 +52,22 @@ export const theme = createTheme({
   },
  },
 });
+
+declare module '@mui/material/styles' {
+
+ interface Palette {
+  black: Palette['primary'];
+ }
+
+ interface PaletteOptions {
+  black?: PaletteOptions['primary'];
+ }
+
+ interface Palette {
+  white: Palette['primary'];
+ }
+
+ interface PaletteOptions {
+  white?: PaletteOptions['primary'];
+ }
+}
