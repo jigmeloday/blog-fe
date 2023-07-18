@@ -7,5 +7,5 @@ export const theme = createTheme({
             light: '#F9EAF3',
             dark: 'rgba(211, 47, 125, 0.6)'
         }
-    }    
+    }
 })
