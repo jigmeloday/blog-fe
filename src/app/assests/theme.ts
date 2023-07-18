@@ -30,7 +30,6 @@ export const theme = createTheme({
   },
  },
  typography: {
-  // fontFamily: 'Open Sans, sans-serif', need to talk with UX
 
   body1: {
    fontSize: '16px',
