@@ -17,6 +17,17 @@ export const theme = createTheme({
    main: '#F39C12',
    contrastText: '#FFFFFF'
   },
+  black: {
+   main: '#1F1F1F',
+   light: '#ABABAB',
+   dark: '#3D3D3C',
+   contrastText: '#626262',
+  },
+  white: {
+   main: '#FAF9F9',
+   light: '#FAF9F9',
+   contrastText: '#CACACA'
+  },
  },
  typography: {
   // fontFamily: 'Open Sans, sans-serif', need to talk with UX
