@@ -1,5 +1,5 @@
-'use client'
-import { Button, Grid } from '@mui/material';
+'use client';
+import { Grid } from '@mui/material';
 import { theme } from '@/app/assests/theme';
 
 export default function Home() {
@@ -7,5 +7,5 @@ export default function Home() {
     <Grid bgcolor={theme.palette.primary.main}>
       hello
     </Grid>
-  )
+  );
 }

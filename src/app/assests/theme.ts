@@ -8,4 +8,4 @@ export const theme = createTheme({
             dark: '#005673'
         }
     }
-})
+});
