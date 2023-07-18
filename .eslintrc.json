@@ -5,6 +5,8 @@
     "no-debugger": "error",
     "semi": "error",
     "no-unused-vars": "error",
+    "space-before-function-paren": ["error", "always"],
+    "indent": ["error", 1],
     "quotes": [
       "error",
       "single",
