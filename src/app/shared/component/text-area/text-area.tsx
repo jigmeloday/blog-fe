@@ -1,14 +1,5 @@
 import { TextareaAutosize } from '@mui/material';
-
-/* eslint-disable-next-line */
-export interface TextAreaProps {
-  label?: string;
-  name?: string;
-  onChange?: any;
-  value?: string;
-  onBlur?: any;
-  minRows?: number
-}
+import { TextAreaProps } from '@/app/shared/component/text-area/model/text-area.model';
 
 export function TextArea ( props: TextAreaProps ): JSX.Element {
  return (
