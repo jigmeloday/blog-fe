@@ -1,10 +1,11 @@
 'use client';
 import { ThemeProvider } from '@mui/material';
-import { theme } from '@/app/assests/theme';
 import { Provider } from 'react-redux';
 import { store } from '@/app/rtk-store/rtk-store';
+import {ReactNode} from 'react';
+import { theme } from '../../../styles/theme';
 
-function Providers ( { children }: { children: React.ReactNode }) {
+function Providers ( { children }: { children: ReactNode }) {
  return (
   <ThemeProvider theme={theme}>
    <Provider store={store}>
