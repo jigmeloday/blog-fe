@@ -1,11 +1,14 @@
 'use client';
 import { Grid } from '@mui/material';
-import { theme } from '@/app/assests/theme';
+import Input from '@/app/shared/component/input/input.component';
+import Button from '@/app/shared/component/button/button.component';
 
 export default function Home () {
  return (
-  <Grid bgcolor={theme.palette.primary.main}>
-      hello
+  <Grid py='120px'>
+   <Input name={'hello'} placeholder='hello' label='Hello' variant='outlined' />
+   <Button label='HELLO' variant='contained' />
+   <Button label='outlined' variant='outlined' />
   </Grid>
  );
 }
