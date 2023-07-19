@@ -1,5 +1,6 @@
 import { OutlinedInputProps, SxProps } from '@mui/material';
 import { Theme } from '@mui/system';
+import { MatInputVariants } from '@/app/shared/model/common.model';
 
 export interface InputProps{
     InputProps?: Partial<OutlinedInputProps>;
@@ -18,4 +19,3 @@ export interface InputProps{
     sx?: SxProps<Theme>;
     required?: boolean;
 }
-export type MatInputVariants = 'filled' | 'outlined' | 'standard';
