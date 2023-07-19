@@ -11,14 +11,6 @@ const CustomButton = styled(MatButton)(
       min-width: 0;
     }
    }
-   &.button--black {
-      background-color: ${theme.palette.black.main};
-      color: ${theme.palette.white.main};
-   }
-   &.button-contain--white {
-      background-color: ${theme.palette.white.main};
-      color: ${theme.palette.primary.light};
-   }
    &.Mui-disabled {
      background-color: ${theme.palette.altoGray.main};
      color: ${theme.palette.black.contrastText};

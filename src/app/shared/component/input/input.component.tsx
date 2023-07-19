@@ -1,34 +1,5 @@
 import { InputProps } from '@/app/shared/component/input/model/input.model';
 import { Grid, TextField } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-const CustomInput = styled( TextField )(
- ( {  } ) => `
-  &.custom--input {
-      .MuiOutlinedInput {
-        &-notchedOutline {
-          border: unset;
-       }
-
-        &-root {
-          height: 2.5rem;
-        }
-      }
-   }
-
-  &.white--input {
-     .MuiInputLabel-root {
-       color: white;
-     }
-
-      .MuiOutlinedInput {
-        &-notchedOutline {
-          border-color: white;
-        }
-      }
-   }
-  `
-);
 
 function Input (props: InputProps) {
  const { placeholder, 
@@ -47,7 +18,7 @@ function Input (props: InputProps) {
  } = props;
  return(
   <Grid>
-   <CustomInput
+   <TextField
     fullWidth
     className={className as string}
     name={name}

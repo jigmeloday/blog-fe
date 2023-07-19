@@ -22,7 +22,7 @@ export function Typography (props: TypographyProps) {
   <CustomTypography
    color={props?.color} variant={props.variant} align={props?.align} sx={props?.sx}
    className={props?.className} fontWeight={props?.fontWeight} fontSize={props?.fontSize} onClick={props?.click}
-   id={props?.id} noWrap={props?.noWrap} data-cy={props.dataCy}>
+   id={props?.id} noWrap={props?.noWrap}>
    {props?.label}
   </CustomTypography>
  );
