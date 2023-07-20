@@ -9,7 +9,7 @@ export const pokemonApi = createApi({
  }as FetchBaseQueryArgs),
  endpoints: (builder: EndpointBuilder<any, any, any>) => ({
   getPokemonByName: builder.query<any, string>({
-   query: () => '/posts'
+   query: () => '/articles'
   }),
   getPokemonByID: builder.query<any, string>({
    query: () => '/posts/1'
