@@ -5,7 +5,7 @@ export const theme = createTheme({
   primary: {
    main : '#0079A2',
    light : '#E6F2F6',
-   dark : 'rgba(0,86,115,0.50)'
+   dark : '#005673'
   },
   success: {
    main: '#76D03F'
@@ -22,6 +22,12 @@ export const theme = createTheme({
    light: '#ABABAB',
    dark: '#3D3D3C',
    contrastText: '#626262',
+  },
+  altoGray: {
+   light: '#F2F2F2',
+   main: '#F5F5F5',
+   dark: '#F8F9FA',
+   contrastText: '#979A9D',
   },
   white: {
    main: '#FAF9F9',
@@ -54,7 +60,13 @@ export const theme = createTheme({
 });
 
 declare module '@mui/material/styles' {
+ interface Palette {
+  altoGray: Palette['primary'];
+ }
 
+ interface PaletteOptions {
+  altoGray?: PaletteOptions['primary'];
+ }
  interface Palette {
   black: Palette['primary'];
  }
