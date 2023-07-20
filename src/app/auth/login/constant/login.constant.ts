@@ -1,4 +1,5 @@
 import { LoginForm, LoginIcons } from '@/app/auth/login/model/login.model';
+import gmail from '../../../../../public/icons/Gmail.svg';
 
 export const LOGIN_FORM: LoginForm[] = [
  {
@@ -13,9 +14,7 @@ export const LOGIN_FORM: LoginForm[] = [
 
 export const LOGIN_ICONS: LoginIcons[] = [
  {
-  name: 'Gmail'
- },
- {
-  name: 'Github'
+  name: 'Gmail',
+  img: gmail
  }
 ];

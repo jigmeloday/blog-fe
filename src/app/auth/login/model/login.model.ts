@@ -5,4 +5,5 @@ export interface LoginForm {
 
 export interface LoginIcons {
     name: string
+    img?: string
 }

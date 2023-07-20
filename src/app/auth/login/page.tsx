@@ -1,11 +1,11 @@
 'use client';
-import { Grid, Icon } from '@mui/material';
+import { Grid } from '@mui/material';
 import AuthContainer from '@/app/auth/component/auth-container';
 import LoginForm from '@/app/auth/login/components/form.component';
 import Typography from '@/shared/component/typography/typography';
 import { theme } from '../../../../styles/theme';
 import { LOGIN_ICONS } from '@/app/auth/login/constant/login.constant';
-// import Icon from '@/shared/component/icon/icon';
+import Image from 'next/image';
 
 export default function Login (){
  return(
@@ -21,8 +21,8 @@ export default function Login (){
      </Grid>
      <Grid item container my='32px' justifyContent='center'>
       {
-       LOGIN_ICONS.map(({ name }) => (
-        <Icon key={name}>home</Icon>
+       LOGIN_ICONS.map(({ name, img }) => (
+        <Image src={img as string} alt='gmail' key={name} className='cursor--pointer' />
        ))
       }
      </Grid>
