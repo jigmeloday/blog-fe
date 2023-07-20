@@ -6,3 +6,30 @@
     cursor: pointer;
 }
 
+.width--full {
+    width: 100%;
+}
+
+.width--inherit {
+    width: inherit;
+}
+
+.width--fit-content {
+    width: fit-content;
+}
+
+.width--auto {
+    width: auto;
+}
+
+.width--vw {
+    width: 100vw;
+}
+
+
+
+
+
+
+
+

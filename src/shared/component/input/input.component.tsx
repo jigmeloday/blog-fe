@@ -1,4 +1,3 @@
-import { InputProps } from '@/app/shared/component/input/model/input.model';
 import { Grid, TextField } from '@mui/material';
 
 function Input (props: InputProps) {
@@ -19,7 +18,6 @@ function Input (props: InputProps) {
  return(
   <Grid>
    <TextField
-    fullWidth
     className={className as string}
     name={name}
     onBlur={onBlur}
