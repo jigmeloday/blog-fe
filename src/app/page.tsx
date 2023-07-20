@@ -1,8 +1,9 @@
 'use client';
 import { Grid } from '@mui/material';
-import Input from '@/app/shared/component/input/input.component';
-import Button from '@/app/shared/component/button/button.component';
-import Dropdown from '@/app/shared/component/dropdown/dropdown';
+import Input from '@/shared/component/input/input.component';
+import Button from '@/shared/component/button/button.component';
+import Dropdown from '@/shared/component/dropdown/dropdown';
+
 
 export default function Home () {
  const val = [

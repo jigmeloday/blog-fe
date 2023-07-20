@@ -1,9 +1,9 @@
 'use client';
 import { ThemeProvider } from '@mui/material';
 import { Provider } from 'react-redux';
-import { store } from '@/app/rtk-store/rtk-store';
 import {ReactNode} from 'react';
-import { theme } from '../../../styles/theme';
+import { theme } from '../../styles/theme';
+import { store } from '@/rtk-store/rtk-store';
 
 function Providers ( { children }: { children: ReactNode }) {
  return (
