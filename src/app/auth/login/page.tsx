@@ -1,18 +1,38 @@
-import { Grid } from '@mui/material';
+'use client';
+import { Grid, Icon } from '@mui/material';
 import AuthContainer from '@/app/auth/component/auth-container';
 import LoginForm from '@/app/auth/login/components/form.component';
+import Typography from '@/shared/component/typography/typography';
+import { theme } from '../../../../styles/theme';
+import { LOGIN_ICONS } from '@/app/auth/login/constant/login.constant';
+// import Icon from '@/shared/component/icon/icon';
 
 export default function Login (){
  return(
   <AuthContainer>
    <Grid container justifyContent='center'>
-    <Grid>
-              logo
-    </Grid>
-    <Grid item container my='32px'>
+    <Grid>logo</Grid>
+    <Grid item container mt='32px'>
      <LoginForm />
+     <Grid item container direction='row' justifyContent='center' alignItems='center'>
+      <Grid item container border={`1px solid ${theme.palette.black.light}`} xs={4.6} mr='4px'/>
+      <Typography label='Login with' variant='caption' />
+      <Grid item container xs={4.6} ml='4px' border={`1px solid ${theme.palette.black.light}`}/>
+     </Grid>
+     <Grid item container my='32px' justifyContent='center'>
+      {
+       LOGIN_ICONS.map(({ name }) => (
+        <Icon key={name}>home</Icon>
+       ))
+      }
+     </Grid>
+    </Grid>
+    <Grid item container direction='row' justifyContent='center' gap='4px'>
+     <Typography label='Don’t have account?' variant='caption' />
+     <Typography label='Sign In' variant='caption' color='primary.main' className='cursor--pointer' />
     </Grid>
    </Grid>
+
   </AuthContainer>
  );
-} 
+}

@@ -1,4 +1,4 @@
-import { LoginForm } from '@/app/auth/login/model/login.model';
+import { LoginForm, LoginIcons } from '@/app/auth/login/model/login.model';
 
 export const LOGIN_FORM: LoginForm[] = [
  {
@@ -8,5 +8,14 @@ export const LOGIN_FORM: LoginForm[] = [
  {
   name: 'password',
   label: 'Password'
+ }
+];
+
+export const LOGIN_ICONS: LoginIcons[] = [
+ {
+  name: 'Gmail'
+ },
+ {
+  name: 'Github'
  }
 ];

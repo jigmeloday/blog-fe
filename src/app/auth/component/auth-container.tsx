@@ -9,7 +9,7 @@ export default function AuthContainer (props: ReactNode) {
   <Grid className='position--relative' item container direction='row'>
    <Background item xs={8}/>
    <Background
-       item
+    item
     background={ `
        var(--gradient, linear-gradient(225deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%))
        ` }
