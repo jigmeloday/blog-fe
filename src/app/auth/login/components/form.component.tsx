@@ -16,8 +16,13 @@ export default function LoginForm () {
     <Grid item container>
      {
       LOGIN_FORM.map( ( { label, name } ) => (
-       <Grid item container my='16px' key={ `${ label }+${ name }` }>
-        <Input name={ name } label={ label } onChange={ handleChange }/>
+       <Grid item container my='8px' key={ `${ label }+${ name }` }>
+        <Input 
+         name={ name } 
+         label={ label }
+         helperText={'type'}
+         onChange={ handleChange }
+        />
        </Grid>
       ) )
      }

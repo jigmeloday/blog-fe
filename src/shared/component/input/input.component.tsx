@@ -1,4 +1,5 @@
 import { Grid, TextField } from '@mui/material';
+import { InputProps } from '@/shared/component/input/model/input.model';
 
 function Input (props: InputProps) {
  const { placeholder, 
@@ -17,7 +18,7 @@ function Input (props: InputProps) {
  } = props;
  return(
   <Grid>
-   <TextField
+   <TextField fullWidth
     className={className as string}
     name={name}
     onBlur={onBlur}
