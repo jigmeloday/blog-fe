@@ -9,16 +9,25 @@ import Checkbox from '@/shared/component/checkbox/checkbox.component';
 import { LOGIN_SCHEMA } from '@/app/auth/services/schema/schema.service';
 import { useState } from 'react';
 import Icon from '@/shared/component/icon/icon';
+import { useLoginUserMutation } from '@/app/auth/services/api-service/api-service';
 
 export default function LoginForm () {
  const [ passwordView, setPasswordView ] = useState<boolean>( true );
-
+ const [ login  ] = useLoginUserMutation();
  return (
   <Formik
-   onSubmit={ () => alert( 'hello' ) }
-   initialValues={ {} }
+   onSubmit={ ({ email, password }) => {
+    const data = {
+     user: {
+      email,
+      password
+     }
+    };
+    login(data);
+   } }
+   initialValues={ { email: '', password: '' } }
    validationSchema={LOGIN_SCHEMA}
-   render={ ( { handleChange, handleBlur, handleSubmit, errors, touched } ) => (
+   render={ ( { handleChange, values, handleBlur, handleSubmit, errors, touched } ) => (
     <Grid item container>
      {
       LOGIN_FORM.map( ( { label, name, type } ) => (
@@ -27,6 +36,7 @@ export default function LoginForm () {
          name={ name } 
          label={ label }
          onBlur={handleBlur}
+         value={values[name]}      
          variant='outlined' 
          type={( type === 'password' &&  passwordView ? 'password' : 'text' ) || type}
          helperText={(touched[name as keyof unknown] &&
@@ -59,7 +69,7 @@ export default function LoginForm () {
       </Grid>
      </Grid>
      <Grid item container my='32px' >
-      <Button click={ handleSubmit } variant='contained' label='Login' className='width--full'/>
+      <Button click={ handleSubmit } variant='contained' label='Login' className='width--full' />
      </Grid>
     </Grid>
    ) }
