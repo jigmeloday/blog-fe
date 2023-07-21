@@ -6,13 +6,15 @@ import Input from '@/shared/component/input/input.component';
 import Button from '@/shared/component/button/button.component';
 import Typography from '@/shared/component/typography/typography';
 import Checkbox from '@/shared/component/checkbox/checkbox.component';
+import { LOGIN_SCHEMA } from '@/app/auth/services/schema/schema.service';
 
 export default function LoginForm () {
  return (
   <Formik
    onSubmit={ () => alert( 'hello' ) }
    initialValues={ {} }
-   render={ ( { handleChange, handleSubmit } ) => (
+   validationSchema={LOGIN_SCHEMA}
+   render={ ( { handleChange, handleBlur, handleSubmit, errors, touched } ) => (
     <Grid item container>
      {
       LOGIN_FORM.map( ( { label, name } ) => (
@@ -20,7 +22,10 @@ export default function LoginForm () {
         <Input 
          name={ name } 
          label={ label }
-         helperText={'type'}
+         onBlur={handleBlur}
+         helperText={(touched[name as keyof unknown] &&
+             errors[name as keyof unknown] &&
+             errors[name as keyof unknown]) as string }
          onChange={ handleChange }
         />
        </Grid>
