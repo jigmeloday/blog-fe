@@ -1,6 +1,7 @@
 export interface LoginForm {
     name: string;
-    label: string
+    label: string;
+    type: string
 }
 
 export interface LoginIcons {

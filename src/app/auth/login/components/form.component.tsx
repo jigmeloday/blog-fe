@@ -1,14 +1,18 @@
 'use client';
 import { Formik } from 'formik';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, InputAdornment } from '@mui/material';
 import { LOGIN_FORM } from '@/app/auth/login/constant/login.constant';
 import Input from '@/shared/component/input/input.component';
 import Button from '@/shared/component/button/button.component';
 import Typography from '@/shared/component/typography/typography';
 import Checkbox from '@/shared/component/checkbox/checkbox.component';
 import { LOGIN_SCHEMA } from '@/app/auth/services/schema/schema.service';
+import { useState } from 'react';
+import Icon from '@/shared/component/icon/icon';
 
 export default function LoginForm () {
+ const [ passwordView, setPasswordView ] = useState<boolean>( true );
+
  return (
   <Formik
    onSubmit={ () => alert( 'hello' ) }
@@ -17,16 +21,26 @@ export default function LoginForm () {
    render={ ( { handleChange, handleBlur, handleSubmit, errors, touched } ) => (
     <Grid item container>
      {
-      LOGIN_FORM.map( ( { label, name } ) => (
+      LOGIN_FORM.map( ( { label, name, type } ) => (
        <Grid item container my='8px' key={ `${ label }+${ name }` }>
-        <Input 
+        <Input className='width--full'
          name={ name } 
          label={ label }
          onBlur={handleBlur}
+         variant='outlined' 
+         type={( type === 'password' &&  passwordView ? 'password' : 'text' ) || type}
          helperText={(touched[name as keyof unknown] &&
              errors[name as keyof unknown] &&
              errors[name as keyof unknown]) as string }
          onChange={ handleChange }
+         InputProps={ {
+          endAdornment: (
+           type === 'password' && <InputAdornment position="start" className='cursor--pointer' onClick={(): void =>
+            setPasswordView( !passwordView )}>
+            <Icon iconName={ passwordView ? 'visibility' : 'visibility_off' } />
+           </InputAdornment>
+          ),
+         } }      
         />
        </Grid>
       ) )

@@ -4,12 +4,14 @@ import gmail from '../../../../../public/icons/Gmail.svg';
 export const LOGIN_FORM: LoginForm[] = [
  {
   name: 'email',
-  label: 'Email'
+  label: 'Email',
+  type: 'email'
  },
  {
   name: 'password',
-  label: 'Password'
- }
+  label: 'Password',
+  type: 'password'
+ },
 ];
 
 export const LOGIN_ICONS: LoginIcons[] = [
