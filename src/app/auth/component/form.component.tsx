@@ -6,7 +6,7 @@ import Button from '@/shared/component/button/button.component';
 import Typography from '@/shared/component/typography/typography';
 import Checkbox from '@/shared/component/checkbox/checkbox.component';
 import { LOGIN_SCHEMA, REGISTRATION_SCHEMA } from '@/app/auth/services/schema/schema.service';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icon from '@/shared/component/icon/icon';
 import { useLoginUserMutation, useRegistrationMutation } from '@/app/auth/services/api-service/api-service';
 import {
@@ -17,14 +17,22 @@ import {
  REGISTRATION_INITIAL_VALUE
 } from '@/app/auth/constant/auth.constant';
 import Dropdown from '@/shared/component/dropdown/dropdown';
+import { useRouter } from 'next/navigation';
 
-export default function AuthForm (props: { type: string }) {
+function AuthForm (props: { type: string }) {
+ const router = useRouter();
  const [ passwordView, setPasswordView ] = useState<{ password: boolean, confirmPassword: boolean }>( {
   password: true,
   confirmPassword: true
  } );
- const [ login  ] = useLoginUserMutation();
+ const [ login, { data:loginData }  ] = useLoginUserMutation();
  const [ register ] = useRegistrationMutation();
+
+ useEffect(() => {
+
+  loginData && router.push('/');
+ }, [loginData]);
+
  const showPassword = (name: string) => {
   name === 'password' ? setPasswordView( { 
    password:  !passwordView.password,
@@ -119,3 +127,4 @@ export default function AuthForm (props: { type: string }) {
   </Formik>
  );
 }
+export default AuthForm;
