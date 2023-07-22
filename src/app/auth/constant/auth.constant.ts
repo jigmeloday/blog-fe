@@ -26,6 +26,16 @@ export const REGISTER_FORM: AuthForm[] = [
   type: 'email'
  },
  {
+  name: 'name',
+  label: 'Name',
+  type: 'text'
+ },
+ {
+  name: 'gender',
+  label: 'Gender',
+  type: 'dropdown'
+ },
+ {
   name: 'password',
   label: 'Password',
   type: 'password'
@@ -55,3 +65,10 @@ export const LOGIN_INITIAL_VALUE = {
  email: '',
  password: '',
 };
+
+export const GENDER: string[] = [
+ 'Male',
+ 'Female',
+ 'Other'
+
+];

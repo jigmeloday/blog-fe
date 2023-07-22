@@ -10,11 +10,13 @@ import { useState } from 'react';
 import Icon from '@/shared/component/icon/icon';
 import { useLoginUserMutation, useRegistrationMutation } from '@/app/auth/services/api-service/api-service';
 import {
+ GENDER,
  LOGIN_FORM,
  LOGIN_INITIAL_VALUE,
  REGISTER_FORM,
  REGISTRATION_INITIAL_VALUE
 } from '@/app/auth/constant/auth.constant';
+import Dropdown from '@/shared/component/dropdown/dropdown';
 
 export default function AuthForm (props: { type: string }) {
  const [ passwordView, setPasswordView ] = useState<{ password: boolean, confirmPassword: boolean }>( {
@@ -37,6 +39,8 @@ export default function AuthForm (props: { type: string }) {
    email: value.email,
    password: value.password,
    username: value.userName,
+   name: value.name,
+   gender: value.gender,
    password_confirmation: value.confirmPassword
   }
   };
@@ -47,39 +51,49 @@ export default function AuthForm (props: { type: string }) {
    onSubmit={ (values) => {submitData(values);} }
    initialValues={ props.type === 'login' ? LOGIN_INITIAL_VALUE : REGISTRATION_INITIAL_VALUE  }
    validationSchema={ props.type === 'login'? LOGIN_SCHEMA : REGISTRATION_SCHEMA }
-   render={ ( { handleChange, values, handleBlur, handleSubmit, errors, touched } ) => (
+  >
+   {({ handleChange, handleBlur, values, touched, errors, handleSubmit }) => (
     <Grid item container>
      {
       ( props.type === 'login' ? LOGIN_FORM : REGISTER_FORM ).map( (
        { label, name, type } ) => (
        <Grid item container my='8px' key={ `${ label }+${ name }` }>
-        <Input
-         name={ name }
-         label={ label }
-         onBlur={handleBlur}
-         value={values[name]}
-         variant='outlined'
-         type={
-          (name === 'password' ? !passwordView.password && 'text' : !passwordView.confirmPassword && 'text') || type
-         }
-         helperText={(touched[name as keyof unknown] &&
-             errors[name as keyof unknown] &&
-             errors[name as keyof unknown]) as string }
-         onChange={ handleChange }
-         InputProps={ {
-          endAdornment: (
-           type === 'password' && <InputAdornment position="start" className='cursor--pointer' onClick={(): void =>
-            showPassword(name)}
-           >
-            {
-             name === 'password' ? 
-              <Icon iconName={ passwordView.password ? 'lock_outlined' : 'lock_open' } color='#0079A2' /> :
-              <Icon iconName={ passwordView.confirmPassword ? 'lock_outlined' : 'lock_open' } color='#0079A2' />
-            }
-           </InputAdornment>
-          ),
-         } }
-        />
+        {
+         type !== 'dropdown' ?
+          <Input
+           name={ name }
+           label={ label }
+           onBlur={handleBlur}
+           value={values[name]}
+           variant='outlined'
+           type={
+            (name === 'password' ? !passwordView.password && 'text' : !passwordView.confirmPassword && 'text') || type
+           }
+           helperText={(touched[name as keyof unknown] &&
+                           errors[name as keyof unknown] &&
+                           errors[name as keyof unknown]) as string }
+           onChange={ handleChange }
+           InputProps={ {
+            endAdornment: (
+             type === 'password' && <InputAdornment position="start" className='cursor--pointer' onClick={(): void =>
+              showPassword(name)}
+             >
+              {
+               name === 'password' ?
+                <Icon iconName={ passwordView.password ? 'lock_outlined' : 'lock_open' } color='#0079A2' /> :
+                <Icon iconName={ passwordView.confirmPassword ? 'lock_outlined' : 'lock_open' } color='#0079A2' />
+              }
+             </InputAdornment>
+            ),
+           } }
+          />: <Dropdown
+           label='Gender'
+           value={GENDER}
+           name='gender'
+           handleChange={handleChange}
+           values={values['gender']}
+          />
+        }
        </Grid>
       ) )
      }
@@ -97,11 +111,11 @@ export default function AuthForm (props: { type: string }) {
       </Grid>
      </Grid>
      <Grid item container my='32px' >
-      <Button click={ handleSubmit } 
+      <Button click={ handleSubmit }
        variant='contained' label={ props.type === 'login'? 'Login' : 'Signup' } className='width--full' />
      </Grid>
     </Grid>
-   ) }
-  />
+   )}
+  </Formik>
  );
 }
