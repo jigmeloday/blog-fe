@@ -8,7 +8,7 @@ import Checkbox from '@/shared/component/checkbox/checkbox.component';
 import { LOGIN_SCHEMA, REGISTRATION_SCHEMA } from '@/app/auth/services/schema/schema.service';
 import { useState } from 'react';
 import Icon from '@/shared/component/icon/icon';
-import { useLoginUserMutation } from '@/app/auth/services/api-service/api-service';
+import { useLoginUserMutation, useRegistrationMutation } from '@/app/auth/services/api-service/api-service';
 import {
  LOGIN_FORM,
  LOGIN_INITIAL_VALUE,
@@ -22,7 +22,7 @@ export default function AuthForm (props: { type: string }) {
   confirmPassword: true
  } );
  const [ login  ] = useLoginUserMutation();
-
+ const [ register ] = useRegistrationMutation();
  const showPassword = (name: string) => {
   name === 'password' ? setPasswordView( { 
    password:  !passwordView.password,
@@ -36,10 +36,11 @@ export default function AuthForm (props: { type: string }) {
   const data = { user: {
    email: value.email,
    password: value.password,
-   user_name: value.userName
+   username: value.userName,
+   password_confirmation: value.confirmPassword
   }
   };
-  login(data);
+  props.type === 'login' ? login(data) : register(data);
  };
  return (
   <Formik
