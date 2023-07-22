@@ -1,5 +1,5 @@
 'use client';
-import { Formik } from 'formik';
+import { Formik, FormikValues } from 'formik';
 import { Box, Grid, InputAdornment } from '@mui/material';
 import Input from '@/shared/component/input/input.component';
 import Button from '@/shared/component/button/button.component';
@@ -32,18 +32,18 @@ export default function AuthForm (props: { type: string }) {
    confirmPassword: !passwordView.confirmPassword
   });
  };
-
+ const submitData = (value: FormikValues) => {
+  const data = { user: {
+   email: value.email,
+   password: value.password,
+   user_name: value.userName
+  }
+  };
+  login(data);
+ };
  return (
   <Formik
-   onSubmit={ ({ email, password }) => {
-    const data = {
-     user: {
-      email,
-      password
-     }
-    };
-    login(data);
-   } }
+   onSubmit={ (values) => {submitData(values);} }
    initialValues={ props.type === 'login' ? LOGIN_INITIAL_VALUE : REGISTRATION_INITIAL_VALUE  }
    validationSchema={ props.type === 'login'? LOGIN_SCHEMA : REGISTRATION_SCHEMA }
    render={ ( { handleChange, values, handleBlur, handleSubmit, errors, touched } ) => (
@@ -58,7 +58,9 @@ export default function AuthForm (props: { type: string }) {
          onBlur={handleBlur}
          value={values[name]}
          variant='outlined'
-         type={( type === 'password' &&  passwordView ? 'password' : 'text' ) || type}
+         type={
+          (name === 'password' ? !passwordView.password && 'text' : !passwordView.confirmPassword && 'text') || type
+         }
          helperText={(touched[name as keyof unknown] &&
              errors[name as keyof unknown] &&
              errors[name as keyof unknown]) as string }
