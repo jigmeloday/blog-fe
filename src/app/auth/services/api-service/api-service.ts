@@ -17,9 +17,6 @@ export const authAPI = createApi({
     };
    }
   }),
-  getPokemonByID: builder.query<any, string>({
-   query: () => '/posts/1'
-  }),
  }),
 });
 
