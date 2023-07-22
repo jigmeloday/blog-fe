@@ -17,8 +17,22 @@ import {
 } from '@/app/auth/constant/auth.constant';
 
 export default function AuthForm (props: { type: string }) {
- const [ passwordView, setPasswordView ] = useState<boolean>( true );
+ const [ passwordView, setPasswordView ] = useState<{ password: boolean, confirmPassword: boolean }>( {
+  password: true,
+  confirmPassword: true
+ } );
  const [ login  ] = useLoginUserMutation();
+
+ const showPassword = (name: string) => {
+  name === 'password' ? setPasswordView( { 
+   password:  !passwordView.password,
+   confirmPassword: passwordView.confirmPassword   
+  }) : setPasswordView( {
+   password: passwordView.password,
+   confirmPassword: !passwordView.confirmPassword
+  });
+ };
+
  return (
   <Formik
    onSubmit={ ({ email, password }) => {
@@ -52,8 +66,13 @@ export default function AuthForm (props: { type: string }) {
          InputProps={ {
           endAdornment: (
            type === 'password' && <InputAdornment position="start" className='cursor--pointer' onClick={(): void =>
-            setPasswordView( !passwordView )}>
-            <Icon iconName={ passwordView ? 'lock_outlined' : 'lock_open' } color='#0079A2' />
+            showPassword(name)}
+           >
+            {
+             name === 'password' ? 
+              <Icon iconName={ passwordView.password ? 'lock_outlined' : 'lock_open' } color='#0079A2' /> :
+              <Icon iconName={ passwordView.confirmPassword ? 'lock_outlined' : 'lock_open' } color='#0079A2' />
+            }
            </InputAdornment>
           ),
          } }
