@@ -21,17 +21,23 @@ import { useRouter } from 'next/navigation';
 
 function AuthForm (props: { type: string }) {
  const router = useRouter();
+ const [screate, setScreate] =useState();
  const [ passwordView, setPasswordView ] = useState<{ password: boolean, confirmPassword: boolean }>( {
   password: true,
   confirmPassword: true
  } );
  const [ login, { data:loginData }  ] = useLoginUserMutation();
- const [ register ] = useRegistrationMutation();
+ const [ register, { data: registration } ] = useRegistrationMutation();
 
  useEffect(() => {
-
   loginData && router.push('/');
- }, [loginData]);
+  registration && login( {
+   user: {
+    email: registration.email,
+    password: screate
+   }
+  } );
+ }, [loginData, registration]);
 
  const showPassword = (name: string) => {
   name === 'password' ? setPasswordView( { 
@@ -43,6 +49,7 @@ function AuthForm (props: { type: string }) {
   });
  };
  const submitData = (value: FormikValues) => {
+  setScreate(value.password);
   const data = { user: {
    email: value.email,
    password: value.password,
