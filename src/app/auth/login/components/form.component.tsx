@@ -31,7 +31,7 @@ export default function LoginForm () {
     <Grid item container>
      {
       LOGIN_FORM.map( ( { label, name, type } ) => (
-       <Grid item container border='1px solid black' my='8px' key={ `${ label }+${ name }` }>
+       <Grid item container my='8px' key={ `${ label }+${ name }` }>
         <Input
          name={ name } 
          label={ label }
