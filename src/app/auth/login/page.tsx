@@ -6,6 +6,7 @@ import { theme } from '../../../../styles/theme';
 import Image from 'next/image';
 import AuthForm from '@/app/auth/component/form.component';
 import { AUTH_ICON } from '@/app/auth/constant/auth.constant';
+import Link from 'next/link';
 
 export default function Login (){
  return(
@@ -29,7 +30,9 @@ export default function Login (){
     </Grid>
     <Grid item container direction='row' justifyContent='center' gap='4px'>
      <Typography label='Don’t have account?' variant='caption' />
-     <Typography label='Sign Up' variant='caption' color='primary.main' className='cursor--pointer' />
+     <Link className='text--decoration-none' href='/auth/register'>
+      <Typography label='Sign Up' variant='caption' color='primary.main' className='cursor--pointer' />
+     </Link>
     </Grid>
    </Grid>
 
