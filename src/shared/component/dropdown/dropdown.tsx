@@ -1,12 +1,16 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { DropdownProps } from '@/app/shared/components/dropdown/drop-down/drop-down.model';
+import { DropdownProps } from '@/shared/component/dropdown/drop-down/drop-down.model';
 
 export function Dropdown ( props: DropdownProps ) {
 
  return (
   <FormControl fullWidth>
    <InputLabel>{props?.label}</InputLabel>
-   <Select label={props?.label}>
+   <Select label={props?.label}
+    name={props.name}
+    value={props.values || ''}
+    onChange={props.handleChange}
+   >
     {props.value.map( data =>
      <MenuItem key={data} value={ data }>{ data }</MenuItem>
     )}
