@@ -29,7 +29,7 @@ export default function Login (){
     </Grid>
     <Grid item container direction='row' justifyContent='center' gap='4px'>
      <Typography label='Don’t have account?' variant='caption' />
-     <Typography label='Sign In' variant='caption' color='primary.main' className='cursor--pointer' />
+     <Typography label='Sign Up' variant='caption' color='primary.main' className='cursor--pointer' />
     </Grid>
    </Grid>
 

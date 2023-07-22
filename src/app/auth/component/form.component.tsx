@@ -35,14 +35,14 @@ export default function AuthForm (props: { type: string }) {
    render={ ( { handleChange, values, handleBlur, handleSubmit, errors, touched } ) => (
     <Grid item container>
      {
-      props.type === 'login' ? LOGIN_FORM : REGISTER_FORM.map( ( 
+      ( props.type === 'login' ? LOGIN_FORM : REGISTER_FORM ).map( (
        { label, name, type } ) => (
        <Grid item container my='8px' key={ `${ label }+${ name }` }>
         <Input
-         name={ name } 
+         name={ name }
          label={ label }
          onBlur={handleBlur}
-         value={values[name]}      
+         value={values[name]}
          variant='outlined'
          type={( type === 'password' &&  passwordView ? 'password' : 'text' ) || type}
          helperText={(touched[name as keyof unknown] &&
@@ -53,10 +53,10 @@ export default function AuthForm (props: { type: string }) {
           endAdornment: (
            type === 'password' && <InputAdornment position="start" className='cursor--pointer' onClick={(): void =>
             setPasswordView( !passwordView )}>
-            <Icon iconName={ passwordView ? 'visibility' : 'visibility_off' } />
+            <Icon iconName={ passwordView ? 'lock_outlined' : 'lock_open' } color='#0079A2' />
            </InputAdornment>
           ),
-         } }      
+         } }
         />
        </Grid>
       ) )
@@ -75,7 +75,8 @@ export default function AuthForm (props: { type: string }) {
       </Grid>
      </Grid>
      <Grid item container my='32px' >
-      <Button click={ handleSubmit } variant='contained' label='Login' className='width--full' />
+      <Button click={ handleSubmit } 
+       variant='contained' label={ props.type === 'login'? 'Login' : 'Signup' } className='width--full' />
      </Grid>
     </Grid>
    ) }

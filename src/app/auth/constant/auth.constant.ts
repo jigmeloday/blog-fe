@@ -1,7 +1,7 @@
 import gmail from '../../../../public/icons/Gmail.svg';
-import { LoginForm, LoginIcons } from '@/app/auth/model/auth.model';
+import { AuthForm, LoginIcons } from '@/app/auth/model/auth.model';
 
-export const LOGIN_FORM: LoginForm[] = [
+export const LOGIN_FORM: AuthForm[] = [
  {
   name: 'email',
   label: 'Email',
@@ -14,7 +14,7 @@ export const LOGIN_FORM: LoginForm[] = [
  },
 ];
 
-export const REGISTER_FORM: LoginForm[] = [
+export const REGISTER_FORM: AuthForm[] = [
  {
   name: 'userName',
   label: 'User Name',

@@ -1,4 +1,4 @@
-export interface LoginForm {
+export interface AuthForm {
     name: string;
     label: string;
     type: string
