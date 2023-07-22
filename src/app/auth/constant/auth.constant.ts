@@ -58,7 +58,9 @@ export const REGISTRATION_INITIAL_VALUE = {
  email: '',
  password: '',
  confirmPassword: '',
- userName: ''
+ userName: '',
+ name: '',
+ gender: ''
 };
 
 export const LOGIN_INITIAL_VALUE = {

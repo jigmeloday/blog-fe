@@ -23,6 +23,8 @@ export const REGISTRATION_SCHEMA = Yup.object().shape({
   .matches( /[a-z]/, PASSWORD_REQUIRED_LOWERCASE )
   .matches( /[A-Z]/, PASSWORD_REQUIRED_UPPERCASE ),
  userName: Yup.string().required( REQUIRED_FIELD ),
+ name: Yup.string().required(REQUIRED_FIELD),
+ gender: Yup.string().required(REQUIRED_FIELD),
  confirmPassword: Yup.string()
   .oneOf( [Yup.ref( 'password' ), null] as any, 'Passwords must match' ).required( REQUIRED_FIELD )
 });
