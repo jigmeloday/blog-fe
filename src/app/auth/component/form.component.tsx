@@ -40,7 +40,7 @@ export default function AuthForm (props: { type: string }) {
    password: value.password,
    username: value.userName,
    name: value.name,
-   gender: value.gender,
+   gender: value?.gender?.toLowerCase,
    password_confirmation: value.confirmPassword
   }
   };
