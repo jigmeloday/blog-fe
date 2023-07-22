@@ -31,13 +31,13 @@ export default function LoginForm () {
     <Grid item container>
      {
       LOGIN_FORM.map( ( { label, name, type } ) => (
-       <Grid item container my='8px' key={ `${ label }+${ name }` }>
-        <Input className='width--full'
+       <Grid item container border='1px solid black' my='8px' key={ `${ label }+${ name }` }>
+        <Input
          name={ name } 
          label={ label }
          onBlur={handleBlur}
          value={values[name]}      
-         variant='outlined' 
+         variant='outlined'
          type={( type === 'password' &&  passwordView ? 'password' : 'text' ) || type}
          helperText={(touched[name as keyof unknown] &&
              errors[name as keyof unknown] &&

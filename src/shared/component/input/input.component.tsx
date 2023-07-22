@@ -1,5 +1,15 @@
 import { Grid, TextField } from '@mui/material';
 import { InputProps } from '@/shared/component/input/model/input.model';
+import { styled } from '@mui/system';
+
+const CustomInput = styled( TextField )(
+ ( { theme } ) => `
+  & .MuiFormHelperText-root {
+      color: ${theme.palette.error.main};
+    }
+  
+  `
+);
 
 function Input (props: InputProps) {
  const { placeholder, 
@@ -18,7 +28,7 @@ function Input (props: InputProps) {
  } = props;
  return(
   <Grid>
-   <TextField fullWidth
+   <CustomInput fullWidth
     className={className as string}
     name={name}
     onBlur={onBlur}
