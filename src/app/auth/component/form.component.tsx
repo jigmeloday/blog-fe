@@ -1,17 +1,22 @@
 'use client';
 import { Formik } from 'formik';
 import { Box, Grid, InputAdornment } from '@mui/material';
-import { LOGIN_FORM } from '@/app/auth/login/constant/login.constant';
 import Input from '@/shared/component/input/input.component';
 import Button from '@/shared/component/button/button.component';
 import Typography from '@/shared/component/typography/typography';
 import Checkbox from '@/shared/component/checkbox/checkbox.component';
-import { LOGIN_SCHEMA } from '@/app/auth/services/schema/schema.service';
+import { LOGIN_SCHEMA, REGISTRATION_SCHEMA } from '@/app/auth/services/schema/schema.service';
 import { useState } from 'react';
 import Icon from '@/shared/component/icon/icon';
 import { useLoginUserMutation } from '@/app/auth/services/api-service/api-service';
+import {
+ LOGIN_FORM,
+ LOGIN_INITIAL_VALUE,
+ REGISTER_FORM,
+ REGISTRATION_INITIAL_VALUE
+} from '@/app/auth/constant/auth.constant';
 
-export default function LoginForm () {
+export default function AuthForm (props: { type: string }) {
  const [ passwordView, setPasswordView ] = useState<boolean>( true );
  const [ login  ] = useLoginUserMutation();
  return (
@@ -25,12 +30,13 @@ export default function LoginForm () {
     };
     login(data);
    } }
-   initialValues={ { email: '', password: '' } }
-   validationSchema={LOGIN_SCHEMA}
+   initialValues={ props.type === 'login' ? LOGIN_INITIAL_VALUE : REGISTRATION_INITIAL_VALUE  }
+   validationSchema={ props.type === 'login'? LOGIN_SCHEMA : REGISTRATION_SCHEMA }
    render={ ( { handleChange, values, handleBlur, handleSubmit, errors, touched } ) => (
     <Grid item container>
      {
-      LOGIN_FORM.map( ( { label, name, type } ) => (
+      props.type === 'login' ? LOGIN_FORM : REGISTER_FORM.map( ( 
+       { label, name, type } ) => (
        <Grid item container my='8px' key={ `${ label }+${ name }` }>
         <Input
          name={ name } 
