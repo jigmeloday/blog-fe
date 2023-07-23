@@ -21,7 +21,6 @@ import { useRouter } from 'next/navigation';
 
 function AuthForm (props: { type: string }) {
  const router = useRouter();
- const [screate, setScreate] =useState();
  const [ passwordView, setPasswordView ] = useState<{ password: boolean, confirmPassword: boolean }>( {
   password: true,
   confirmPassword: true
@@ -31,12 +30,7 @@ function AuthForm (props: { type: string }) {
 
  useEffect(() => {
   loginData && router.push('/');
-  registration && login( {
-   user: {
-    email: registration.email,
-    password: screate
-   }
-  } );
+  registration && router.push('/auth/register/verification');
  }, [loginData, registration]);
 
  const showPassword = (name: string) => {
@@ -49,7 +43,6 @@ function AuthForm (props: { type: string }) {
   });
  };
  const submitData = (value: FormikValues) => {
-  setScreate(value.password);
   const data = { user: {
    email: value.email,
    password: value.password,

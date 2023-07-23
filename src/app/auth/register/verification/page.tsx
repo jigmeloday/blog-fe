@@ -13,6 +13,7 @@ export default function Verification () {
     <Typography label='Enter the OTP' variant='caption' fontSize='16px' />
     <Grid item container my='32px'>
      <VerificationInput
+      length={4}
       classNames={{
        container: 'container',
        character: 'character',
