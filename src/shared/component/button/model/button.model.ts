@@ -1,6 +1,6 @@
 import { SxProps, Theme } from '@mui/material';
+import { MatColors, MatVariants } from '@/app/shared/model/common.model';
 import { ReactNode } from 'react';
-import { MatColors, MatVariants } from '@/shared/model/common.model';
 
 export interface ButtonProps{
     label?: string;

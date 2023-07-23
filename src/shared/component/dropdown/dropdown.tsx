@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { DropdownProps } from '@/app/shared/components/dropdown/drop-down/drop-down.model';
+import { DropdownProps } from '@/app/shared/component/dropdown/drop-down/drop-down.model';
 
 export function Dropdown ( props: DropdownProps ) {
 
