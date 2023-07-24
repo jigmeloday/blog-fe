@@ -7,15 +7,18 @@ import Image from 'next/image';
 import { AUTH_ICON } from '@/app/auth/constant/auth.constant';
 import AuthForm from '@/app/auth/component/form.component';
 import Link from 'next/link';
+import { useState } from 'react';
+import Verification from '@/app/auth/register/verification';
 
 export default function Login (){
+ const [email, setEmail] = useState<string>('');
  return(
   <AuthContainer>
    {
-    <Grid container justifyContent='center'>
+    !email? <Grid container justifyContent='center'>
      <Grid>logo</Grid>
      <Grid item container mt='32px'>
-      <AuthForm />
+      <AuthForm setEmail={setEmail} />
       <Grid item container direction='row' justifyContent='center' alignItems='center'>
        <Grid item container border={`1px solid ${theme.palette.black.light}`} xs={4.6} mr='4px'/>
        <Typography label='Login with' variant='caption' />
@@ -35,7 +38,7 @@ export default function Login (){
        <Typography label='Sign In' variant='caption' color='primary.main' className='cursor--pointer' />
       </Link>
      </Grid>
-    </Grid>
+    </Grid>: <Verification email={email} />
    }
   </AuthContainer>
  );

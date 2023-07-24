@@ -19,8 +19,9 @@ import {
 import Dropdown from '@/shared/component/dropdown/dropdown';
 import { useRouter } from 'next/navigation';
 
-function AuthForm (props: { type: string }) {
+function AuthForm (props: { type?: string, setEmail?: any }) {
  const router = useRouter();
+ const [email, setEmail] = useState<string>('');
  const [ passwordView, setPasswordView ] = useState<{ password: boolean, confirmPassword: boolean }>( {
   password: true,
   confirmPassword: true
@@ -30,7 +31,9 @@ function AuthForm (props: { type: string }) {
 
  useEffect(() => {
   loginData && router.push('/');
-  // registration && router.push('/auth/register/verification');
+  if ( registration ) {
+   props?.setEmail(email);
+  }
  }, [loginData, registration]);
 
  const showPassword = (name: string) => {
@@ -52,18 +55,21 @@ function AuthForm (props: { type: string }) {
    password_confirmation: value.confirmPassword
   }
   };
-  props.type === 'login' ? login(data) : register(data);
+  setEmail(value.email);
+  props?.type === 'login' ? login(data) : register(data);
  };
  return (
   <Formik
-   onSubmit={ (values) => {submitData(values);} }
-   initialValues={ props.type === 'login' ? LOGIN_INITIAL_VALUE : REGISTRATION_INITIAL_VALUE  }
-   validationSchema={ props.type === 'login'? LOGIN_SCHEMA : REGISTRATION_SCHEMA }
+   onSubmit={ (values) => {
+    submitData(values);
+   } }
+   initialValues={ props?.type === 'login' ? LOGIN_INITIAL_VALUE : REGISTRATION_INITIAL_VALUE  }
+   validationSchema={ props?.type === 'login'? LOGIN_SCHEMA : REGISTRATION_SCHEMA }
   >
    {({ handleChange, handleBlur, values, touched, errors, handleSubmit }) => (
     <Grid item container>
      {
-      ( props.type === 'login' ? LOGIN_FORM : REGISTER_FORM ).map( (
+      ( props?.type === 'login' ? LOGIN_FORM : REGISTER_FORM ).map( (
        { label, name, type } ) => (
        <Grid item container my='8px' key={ `${ label }+${ name }` }>
         {
@@ -120,7 +126,7 @@ function AuthForm (props: { type: string }) {
      </Grid>
      <Grid item container my='32px' >
       <Button click={ handleSubmit }
-       variant='contained' label={ props.type === 'login'? 'Login' : 'Signup' } className='width--full' />
+       variant='contained' label={ props?.type === 'login'? 'Login' : 'Signup' } className='width--full' />
      </Grid>
     </Grid>
    )}
