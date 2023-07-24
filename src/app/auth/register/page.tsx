@@ -11,30 +11,32 @@ import Link from 'next/link';
 export default function Login (){
  return(
   <AuthContainer>
-   <Grid container justifyContent='center'>
-    <Grid>logo</Grid>
-    <Grid item container mt='32px'>
-     <AuthForm />
-     <Grid item container direction='row' justifyContent='center' alignItems='center'>
-      <Grid item container border={`1px solid ${theme.palette.black.light}`} xs={4.6} mr='4px'/>
-      <Typography label='Login with' variant='caption' />
-      <Grid item container xs={4.6} ml='4px' border={`1px solid ${theme.palette.black.light}`}/>
+   {
+    <Grid container justifyContent='center'>
+     <Grid>logo</Grid>
+     <Grid item container mt='32px'>
+      <AuthForm />
+      <Grid item container direction='row' justifyContent='center' alignItems='center'>
+       <Grid item container border={`1px solid ${theme.palette.black.light}`} xs={4.6} mr='4px'/>
+       <Typography label='Login with' variant='caption' />
+       <Grid item container xs={4.6} ml='4px' border={`1px solid ${theme.palette.black.light}`}/>
+      </Grid>
+      <Grid item container my='32px' justifyContent='center'>
+       {
+        AUTH_ICON.map(({ name, img }) => (
+         <Image src={img as string} alt='gmail' key={name} className='cursor--pointer' />
+        ))
+       }
+      </Grid>
      </Grid>
-     <Grid item container my='32px' justifyContent='center'>
-      {
-       AUTH_ICON.map(({ name, img }) => (
-        <Image src={img as string} alt='gmail' key={name} className='cursor--pointer' />
-       ))
-      }
+     <Grid item container direction='row' justifyContent='center' gap='4px'>
+      <Typography label='Already have account?' variant='caption' />
+      <Link href='/auth/login' className='text--decoration-none'>
+       <Typography label='Sign In' variant='caption' color='primary.main' className='cursor--pointer' />
+      </Link>
      </Grid>
     </Grid>
-    <Grid item container direction='row' justifyContent='center' gap='4px'>
-     <Typography label='Already have account?' variant='caption' />
-     <Link href='/auth/login' className='text--decoration-none'>
-      <Typography label='Sign In' variant='caption' color='primary.main' className='cursor--pointer' />
-     </Link>
-    </Grid>
-   </Grid>
+   }
   </AuthContainer>
  );
 } 

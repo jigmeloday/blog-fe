@@ -30,7 +30,7 @@ function AuthForm (props: { type: string }) {
 
  useEffect(() => {
   loginData && router.push('/');
-  registration && router.push('/auth/register/verification');
+  // registration && router.push('/auth/register/verification');
  }, [loginData, registration]);
 
  const showPassword = (name: string) => {
