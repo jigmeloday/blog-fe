@@ -26,7 +26,7 @@ function AuthForm (props: { type?: string, setEmail?: any }) {
   password: true,
   confirmPassword: true
  } );
- const [ login, { data:loginData }  ] = useLoginUserMutation();
+ const [ login, { data:loginData, error }  ] = useLoginUserMutation();
  const [ register, { data: registration } ] = useRegistrationMutation();
 
  useEffect(() => {
@@ -34,7 +34,11 @@ function AuthForm (props: { type?: string, setEmail?: any }) {
   if ( registration ) {
    props?.setEmail(email);
   }
- }, [loginData, registration]);
+  if (error?.data?.error === 'You have to confirm your email address before continuing.'  )
+  {
+   props.setEmail(email);
+  }
+ }, [loginData, registration, error]);
 
  const showPassword = (name: string) => {
   name === 'password' ? setPasswordView( { 

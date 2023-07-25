@@ -2,7 +2,7 @@
 import { Grid } from '@mui/material';
 import Typography from '@/shared/component/typography/typography';
 import Button from '@/shared/component/button/button.component';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useConfirmationMutation, useResendConfirmationMutation } from '@/app/auth/services/api-service/api-service';
 import { useRouter } from 'next/navigation';
 import Input from '@/shared/component/input/input.component';
@@ -15,7 +15,7 @@ export default function Verification (props: { email: string }) {
 
  useEffect(() => {
   data && route.push('/auth/login');
- }, [confirmation]);
+ }, [data]);
 
 
  const submitCode =(values: FormikValues) => {
@@ -23,7 +23,7 @@ export default function Verification (props: { email: string }) {
  };
  const resend = () => {
   resendConfirmation({
-   email: props.email
+   email: props?.email
   });
  };
  return(
