@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import Typography from '@/shared/component/typography/typography';
 import Button from '@/shared/component/button/button.component';
 import { useEffect } from 'react';
-import { useConfirmationMutation, useResendConfirmationMutation } from '@/app/auth/services/api-service/api-service';
+import { useConfirmationMutation, useResendConfirmationMutation } from '@/app/(auth)/services/api-service/api-service';
 import { useRouter } from 'next/navigation';
 import Input from '@/shared/component/input/input.component';
 import { Formik, FormikValues } from 'formik';
@@ -14,7 +14,7 @@ export default function Verification (props: { email: string }) {
  const route = useRouter();
 
  useEffect(() => {
-  data && route.push('/auth/login');
+  data && route.push('/(auth)/login');
  }, [data]);
 
 

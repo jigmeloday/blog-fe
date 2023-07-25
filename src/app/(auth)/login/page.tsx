@@ -1,14 +1,14 @@
 'use client';
 import { Grid } from '@mui/material';
-import AuthContainer from '@/app/auth/component/auth-container';
+import AuthContainer from '@/app/(auth)/component/auth-container';
 import Typography from '@/shared/component/typography/typography';
 import { theme } from '../../../../styles/theme';
 import Image from 'next/image';
-import AuthForm from '@/app/auth/component/form.component';
-import { AUTH_ICON } from '@/app/auth/constant/auth.constant';
+import AuthForm from '@/app/(auth)/component/form.component';
+import { AUTH_ICON } from '@/app/(auth)/constant/auth.constant';
 import Link from 'next/link';
 import { useState } from 'react';
-import Verification from '@/app/auth/register/verification';
+import Verification from '@/app/(auth)/register/verification';
 
 export default function Login (){
  const [email, setEmail] = useState();

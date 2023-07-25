@@ -5,17 +5,17 @@ import Input from '@/shared/component/input/input.component';
 import Button from '@/shared/component/button/button.component';
 import Typography from '@/shared/component/typography/typography';
 import Checkbox from '@/shared/component/checkbox/checkbox.component';
-import { LOGIN_SCHEMA, REGISTRATION_SCHEMA } from '@/app/auth/services/schema/schema.service';
+import { LOGIN_SCHEMA, REGISTRATION_SCHEMA } from '@/app/(auth)/services/schema/schema.service';
 import { useEffect, useState } from 'react';
 import Icon from '@/shared/component/icon/icon';
-import { useLoginUserMutation, useRegistrationMutation } from '@/app/auth/services/api-service/api-service';
+import { useLoginUserMutation, useRegistrationMutation } from '@/app/(auth)/services/api-service/api-service';
 import {
  GENDER,
  LOGIN_FORM,
  LOGIN_INITIAL_VALUE,
  REGISTER_FORM,
  REGISTRATION_INITIAL_VALUE
-} from '@/app/auth/constant/auth.constant';
+} from '@/app/(auth)/constant/auth.constant';
 import Dropdown from '@/shared/component/dropdown/dropdown';
 import { useRouter } from 'next/navigation';
 
