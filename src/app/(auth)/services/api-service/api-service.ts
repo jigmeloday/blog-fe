@@ -37,7 +37,7 @@ export const authAPI = createApi({
   resendConfirmation: builder.mutation({
    query (body) {
     return {
-     url: 'users/resend_code_email',
+     url: 'users/confirmation',
      method: 'POST',
      body
     };
