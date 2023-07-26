@@ -1,7 +1,7 @@
 'use client';
 import { Grid } from '@mui/material';
 import { ReactNode } from 'react';
-import { FormContainer, Background } from '@/app/auth/component/style/auth-style';
+import { FormContainer, Background } from '@/app/(auth)/component/style/auth-style';
 import { theme } from '../../../../styles/theme';
 
 export default function AuthContainer (props: ReactNode) {

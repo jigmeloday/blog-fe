@@ -1,5 +1,5 @@
 import gmail from '../../../../public/icons/Gmail.svg';
-import { AuthForm, LoginIcons } from '@/app/auth/model/auth.model';
+import { AuthForm, LoginIcons } from '@/app/(auth)/model/auth.model';
 
 export const LOGIN_FORM: AuthForm[] = [
  {

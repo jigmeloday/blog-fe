@@ -25,10 +25,32 @@ export const authAPI = createApi({
      body
     };
    }
+  }),
+  confirmation: builder.mutation({
+   query (body){
+    return {
+     url: `users/confirmation?confirmation_token=${body}`,
+     method: 'GET',
+    };
+   }
+  }),
+  resendConfirmation: builder.mutation({
+   query (body) {
+    return {
+     url: 'users/resend_code_email',
+     method: 'POST',
+     body
+    };
+   }
   })
  }),
 });
 
-export const { useLoginUserMutation, useRegistrationMutation } = authAPI;
+export const {
+ useLoginUserMutation,
+ useRegistrationMutation,
+ useConfirmationMutation,
+ useResendConfirmationMutation
+} = authAPI;
 
 
