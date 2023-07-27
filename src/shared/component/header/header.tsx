@@ -10,7 +10,7 @@ export default function Header () {
        Logo
    </LogoContainer>
    <Grid item container>
-       <Input name='search' />
+    <Input name='search' />
    </Grid>
    <Grid item container justifyContent='end'>
        hello
