@@ -34,6 +34,7 @@ export default function Home () {
    <Grid item container direction='row' px='80px'>
     <Grid item container xs={8}>
      <PreviewCard />
+     <PreviewCard />
     </Grid>
     <Grid item container xs={4}>
 
