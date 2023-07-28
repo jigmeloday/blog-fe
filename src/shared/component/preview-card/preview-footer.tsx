@@ -18,7 +18,7 @@ function PreviewFooter (){
   <>
    <Grid item container alignItems='center' gap='10px' xs='auto'>
     <Icon iconName={liked? 'favorite' : 'favorite_outlined'}
-          className='cursor--pointer' click={() => setLike(!liked)} />
+     className='cursor--pointer' click={() => setLike(!liked)} />
     <Typography label='3.45K likes' variant='caption' />
    </Grid>
    <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
