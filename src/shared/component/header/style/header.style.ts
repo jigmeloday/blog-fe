@@ -1,5 +1,5 @@
 import { styled } from '@mui/system';
-import { Grid, TextField } from '@mui/material';
+import { Box, Grid, TextField } from '@mui/material';
 
 export const CustomHeader = styled(Grid)(
  ({}) => `
@@ -24,3 +24,14 @@ export const CustomSearch = styled(TextField)(
     border-radius: 66px;
   }
 `);
+
+export const ProfileContainer = styled(Box)(
+ ({theme}) => `
+    height: 44px;
+    width: 44px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 46px;
+    border: 3px solid ${theme.palette.primary.main};
+` );
