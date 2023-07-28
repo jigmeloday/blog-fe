@@ -5,9 +5,10 @@ import { SubHeader } from '@/shared/component/header/style/header.style';
 import Button from '@/shared/component/button/button.component';
 import Icon from '@/shared/component/icon/icon';
 import { FILTER_CHIP } from '@/shared/component/header/constant/header.constant';
+import { useState } from 'react';
 
 export default function Home () {
-
+ const [active, setActive] = useState('all');
  return (
   <Grid container>
    <Header/>
@@ -17,7 +18,11 @@ export default function Home () {
      <Grid items container ml='80px' xs='auto'>
       {
        FILTER_CHIP.map(({ label, value }, index) => (
-        <Box px='24px' ml={index ? '16px': '0'} key={value} className='cursor--pointer'>
+        <Box
+         onClick={() => setActive(value)}
+         color={active === value ? 'primary.main': ''}
+         px='24px' ml={index ? '16px': '0'}
+         key={value} className='cursor--pointer'>
          {label}
         </Box>
        ))
