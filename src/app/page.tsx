@@ -6,6 +6,7 @@ import Button from '@/shared/component/button/button.component';
 import Icon from '@/shared/component/icon/icon';
 import { FILTER_CHIP } from '@/shared/component/header/constant/header.constant';
 import { useState } from 'react';
+import PreviewCard from '@/shared/component/preview-card/preview-card';
 
 export default function Home () {
  const [active, setActive] = useState('all');
@@ -29,6 +30,14 @@ export default function Home () {
       }
      </Grid>
     </SubHeader>
+   </Grid>
+   <Grid item container direction='row' px='80px'>
+    <Grid item container xs={8}>
+     <PreviewCard />
+    </Grid>
+    <Grid item container xs={4}>
+
+    </Grid>
    </Grid>
   </Grid>
  );
