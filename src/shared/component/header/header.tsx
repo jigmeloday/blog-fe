@@ -29,8 +29,8 @@ export default function Header () {
      ))
     }
     <Grid item alignItems='center'>
-     <ProfileContainer >
-      <Image src={profile} alt='profile' fill/>
+     <ProfileContainer alignItem='center' >
+      <Image src={profile} alt='profile' height={60} width={40}/>
      </ProfileContainer>
     </Grid>
    </Grid>
