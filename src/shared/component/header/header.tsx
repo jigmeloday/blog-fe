@@ -9,29 +9,29 @@ import Image from 'next/image';
 
 export default function Header () {
  return (
-  <CustomHeader container items direction='row' justifyContent='center' alignItems='center'>
+  <CustomHeader container item direction='row' justifyContent='center' alignItems='center'>
    <Grid item container direction='row' xs={6}>
     <LogoContainer item container xs='auto'>
            Logo
     </LogoContainer>
     <Grid item container xs={5} ml='48px'>
-     <Search name='search' />
+     <Search name='search' label='Search' placeholder='Search' />
     </Grid>
    </Grid>
    <Grid item container justifyContent='end' xs={6} alignItems='center'>
     {
      HEADER_ICON.map(({ name }) => (
       <Box key={name} pr='32px'>
-       <Badge badgeContent={4} color="primary">
+       <Badge badgeContent={4} color='error'>
         <Icon  iconName={name} className='cursor--pointer' />
        </Badge>
       </Box>
      ))
     }
     <Grid item alignItems='center'>
-       <ProfileContainer >
-           <Image src={profile} alt='profile' layout='fill' objectFit='cover' />
-       </ProfileContainer>
+     <ProfileContainer >
+      <Image src={profile} alt='profile' fill/>
+     </ProfileContainer>
     </Grid>
    </Grid>
   </CustomHeader>

@@ -27,8 +27,8 @@ export const CustomSearch = styled(TextField)(
 
 export const ProfileContainer = styled(Box)(
  ({theme}) => `
-    height: 44px;
-    width: 44px;
+    height: 42px;
+    width: 42px;
     position: relative;
     cursor: pointer;
     overflow: hidden;

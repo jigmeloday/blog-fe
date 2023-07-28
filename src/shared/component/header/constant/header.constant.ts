@@ -5,6 +5,6 @@ export const HEADER_ICON: HeaderIconModel[] = [
   name: 'chat_bubble_outlined'
  },
  {
-  name: 'notifications_outlined'
+  name: 'notifications_none'
  }
 ];

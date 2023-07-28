@@ -1,8 +1,10 @@
 import { CustomSearch } from '@/shared/component/header/style/header.style';
+import { SearchProps } from '@/shared/component/search/model/search.model';
 
-function Search () {
+function Search (props: SearchProps) {
+ const { placeholder, name, value, handleChange } = props;
  return(
-  <CustomSearch />
+  <CustomSearch name={name} placeholder={placeholder} onChange={handleChange} value={value} />
  );
 }
 
