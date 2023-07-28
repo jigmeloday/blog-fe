@@ -1,5 +1,5 @@
 import { styled } from '@mui/system';
-import { Grid } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 
 export const CustomHeader = styled(Grid)(
  ({}) => `
@@ -15,3 +15,12 @@ export const LogoContainer = styled(Grid)(
     border-radius: 26px;
     border: 1px solid black;
  `);
+
+export const CustomSearch = styled(TextField)(
+ ({}) => `
+  & .MuiInputBase-root{
+    height: 45px;
+    width: 300px;
+    border-radius: 66px;
+  }
+`);
