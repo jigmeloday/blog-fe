@@ -39,7 +39,7 @@ function PreviewFooter (props: PreviewFooterProps  ){
   <>
    <Grid item container xs={6}>
     <Grid item container alignItems='center' gap='10px' xs='auto'>
-     <Icon iconName={liked? 'favorite' : 'favorite_outlined'}
+     <Icon iconName={ liked ? 'favorite' : 'favorite_outlined'} color={liked? '#0079A2' : ''}
       className='cursor--pointer' click={() => likeAction(props.article_id)} />
      <Typography label={likeCount} variant='caption' />
     </Grid>
