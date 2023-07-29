@@ -35,3 +35,10 @@ export const ProfileContainer = styled(Box)(
     border-radius: 46px;
     border: 3px solid ${theme.palette.primary.main};
 ` );
+
+export const SubHeader = styled(Grid)(
+ ({  }) => `
+  width: 100%;
+  padding-top: 8px;
+  border-bottom: 1px solid var(--primary-blue-50, #E6F2F6);  
+`);

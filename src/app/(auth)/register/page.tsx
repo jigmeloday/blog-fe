@@ -34,7 +34,7 @@ export default function Login (){
      </Grid>
      <Grid item container direction='row' justifyContent='center' gap='4px'>
       <Typography label='Already have account?' variant='caption' />
-      <Link href='/auth/login' className='text--decoration-none'>
+      <Link href='/login' className='text--decoration-none'>
        <Typography label='Sign In' variant='caption' color='primary.main' className='cursor--pointer' />
       </Link>
      </Grid>
