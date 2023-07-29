@@ -4,9 +4,9 @@ import Typography from '@/shared/component/typography/typography';
 import Button from '@/shared/component/button/button.component';
 import { useState } from 'react';
 
-function PreviewFooter (){
+function PreviewFooter (props: { comment_count: number, like_count: number, liked_by_current_user: boolean } ){
  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
- const [liked, setLike] = useState<boolean>(false);
+ const [liked, setLike] = useState<boolean>(props.liked_by_current_user);
  const open = Boolean(!!anchorEl);
  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
   setAnchorEl(event.currentTarget);
@@ -16,18 +16,20 @@ function PreviewFooter (){
  };
  return(
   <>
-   <Grid item container alignItems='center' gap='10px' xs='auto'>
-    <Icon iconName={liked? 'favorite' : 'favorite_outlined'}
-     className='cursor--pointer' click={() => setLike(!liked)} />
-    <Typography label='3.45K likes' variant='caption' />
-   </Grid>
-   <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
-    <Icon iconName='mode_comment_none' className='cursor--pointer' />
-    <Typography label='3.45K comments' variant='caption' />
-   </Grid>
-   <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
-    <Icon iconName='shared' className='cursor--pointer' />
-    <Typography label='3.45K shares' variant='caption' />
+   <Grid item container xs={6}>
+    <Grid item container alignItems='center' gap='10px' xs='auto'>
+     <Icon iconName={liked? 'favorite' : 'favorite_outlined'}
+      className='cursor--pointer' click={() => setLike(!liked)} />
+     <Typography label={props?.like_count} variant='caption' />
+    </Grid>
+    <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
+     <Icon iconName='mode_comment_none' className='cursor--pointer' />
+     <Typography label={props?.comment_count} variant='caption' />
+    </Grid>
+    <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
+     <Icon iconName='shared' className='cursor--pointer' />
+     <Typography label='3.45K shares' variant='caption' />
+    </Grid>
    </Grid>
    <Grid item container justifyContent='end' xs={6}>
     <Menu
