@@ -38,7 +38,7 @@ function PreviewCard (props: { article: ArticleData }) {
     </Grid>
     <Grid item container direction='row' alignItems='center' xs={12}>
      <PreviewFooter comment_count={props.article.comment_count}
-      like_count={props.article.like_count}
+      like_count={props.article.like_count} article_id={props.article.id}
       liked_by_current_user={props.article.liked_by_current_user} />
     </Grid>
    </Grid>

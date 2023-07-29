@@ -14,8 +14,31 @@ export const articleAPI = createApi({
   }),
   getArticleByID: builder.query({
    query: () => '/articles',
+  }),
+  createArticleLike: builder.mutation({
+   query (body) {
+    return {
+     url: 'likes',
+     method: 'POST',
+     body,
+    };
+   }
+  }),
+  destroyArticleLike: builder.mutation({
+   query (body) {
+    return {
+     url: `likes/${body.like.likable_id}`,
+     method: 'DELETE',
+     body,
+    };
+   }
   })
  }),
 });
 
-export const { useGetArticleQuery, useGetArticleByIDQuery } = articleAPI;
+export const {
+ useGetArticleQuery,
+ useGetArticleByIDQuery,
+ useCreateArticleLikeMutation,
+ useDestroyArticleLikeMutation
+} = articleAPI;
