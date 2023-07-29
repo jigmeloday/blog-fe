@@ -9,6 +9,7 @@ export interface ArticleData {
     like_count: number;
     liked_by_current_user: boolean;
     owner: UserModel;
+    is_following: boolean;
     created_at: Date;
 }
 
