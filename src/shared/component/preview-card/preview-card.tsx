@@ -5,9 +5,10 @@ import { ProfileImage } from '@/shared/component/preview-card/style/preview.styl
 import Typography from '@/shared/component/typography/typography';
 import PreviewFooter from '@/shared/component/preview-card/preview-footer';
 import { ArticleData } from '@/shared/model/common.model';
+import { dateFormat } from '@/shared/utils/utilities';
 
 function PreviewCard (props: { article: ArticleData }) {
-
+ 
  return(
   <Grid item container direction='row' py='24px' borderBottom='1px solid var(--primary-blue-50, #E6F2F6)' mb='44px'>
    <Grid item container xs={12}>
@@ -17,7 +18,7 @@ function PreviewCard (props: { article: ArticleData }) {
      </ProfileImage>
      <Grid item container xs={8} ml='12px' direction='column'>
       <Grid item container direction='row' alignItems='center'>
-       <Typography label='Jigme Lodey' variant='body1' fontSize='16px' fontWeight='400' />
+       <Typography label={props?.article?.owner?.name} variant='body1' fontSize='16px' fontWeight='400' />
        <Grid item container pl='12px' direction='row' xs='auto'>
         <Typography label='-' variant='body1' fontSize='12px' fontWeight='300' />
         <Box ml='4px'>
@@ -25,7 +26,7 @@ function PreviewCard (props: { article: ArticleData }) {
         </Box>
        </Grid>
       </Grid>
-      <Typography label='Monday 24th Jan, 2023' variant='caption' fontSize='12px' fontWeight='300' />
+      <Typography label={dateFormat(props.article.created_at)} variant='caption' fontSize='12px' fontWeight='300' />
      </Grid>
     </Grid>
     <Grid item container my='24px' direction='column'>

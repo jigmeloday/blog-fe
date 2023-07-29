@@ -8,5 +8,11 @@ export interface ArticleData {
     comment_count: number;
     like_count: number;
     liked_by_current_user: boolean;
+    owner: UserModel;
+    created_at: Date;
 }
 
+export interface UserModel {
+    id: number;
+    name: string
+}
