@@ -5,6 +5,8 @@ import Button from '@/shared/component/button/button.component';
 import { useState } from 'react';
 import { useCreateArticleLikeMutation, useDestroyArticleLikeMutation } from '@/app/services/api/article.slice';
 import { PreviewFooterProps } from '@/shared/component/preview-card/model/preview.model';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
 
 function PreviewFooter (props: PreviewFooterProps  ){
  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -12,6 +14,7 @@ function PreviewFooter (props: PreviewFooterProps  ){
  const [likeCount, setLikeCount] = useState<number>(props.like_count);
  const [likeArticle] = useCreateArticleLikeMutation();
  const [dislikeArticle] = useDestroyArticleLikeMutation();
+ const route = useRouter();
  const open = Boolean(!!anchorEl);
  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
   setAnchorEl(event.currentTarget);
@@ -20,19 +23,24 @@ function PreviewFooter (props: PreviewFooterProps  ){
   setAnchorEl(null);
  };
  const likeAction = (id: number) => {
+  const user = getCookie('authenticated');
   const data = {
    like: {
     likable_id: id,
     likable_type: 'Article'
    }
   };
-  if ( liked ) {
-   dislikeArticle(data);
+  if ( user ) {
+   if ( liked ) {
+    dislikeArticle(data);
+   } else {
+    likeArticle(data);
+   }
+   setLike(!liked);
+   setLikeCount( !liked ? likeCount+1 : likeCount-1);
   } else {
-   likeArticle(data);
+   route.push('/login');
   }
-  setLike(!liked);
-  setLikeCount( !liked ? likeCount+1 : likeCount-1);
  };
 
  return(

@@ -45,7 +45,7 @@ export default function Header () {
         <Image src={profile} alt='profile' height={60} width={40}/>
        </ProfileContainer>
       </Grid>
-     </> : <Button click={() =>  {route.push('/login')} } label='login' variant='outlined'/>
+     </> : <Button click={() => route.push('/login')} label='login' variant='outlined'/>
     }
    </Grid>
   </CustomHeader>
