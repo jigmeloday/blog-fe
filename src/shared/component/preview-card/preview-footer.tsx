@@ -16,14 +16,15 @@ function PreviewFooter (props: PreviewFooterProps  ){
  const [dislikeArticle] = useDestroyArticleLikeMutation();
  const route = useRouter();
  const open = Boolean(!!anchorEl);
+ const user = getCookie('authenticated');
  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  !user && route.push('/login');
   setAnchorEl(event.currentTarget);
  };
  const handleClose = () => {
   setAnchorEl(null);
  };
  const likeAction = (id: number) => {
-  const user = getCookie('authenticated');
   const data = {
    like: {
     likable_id: id,
