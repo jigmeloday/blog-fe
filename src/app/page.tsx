@@ -9,8 +9,12 @@ import { useState } from 'react';
 import PreviewCard from '@/shared/component/preview-card/preview-card';
 import { useGetArticleByIDQuery } from '@/app/services/api/article.slice';
 import { ArticleData } from '@/shared/model/common.model';
+import Typography from '@/shared/component/typography/typography';
+import { DUMMY_DATA } from '@/shared/constant/shared.constant';
+import { theme } from '../../styles/theme';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
+import Popular from '@/shared/component/home-side-items/popular';
 
 export default function Home () {
  const [active, setActive] = useState('all');
@@ -40,14 +44,28 @@ export default function Home () {
      </Grid>
     </SubHeader>
    </Grid>
-   <Grid item container direction='row' px='80px'>
-    <Grid item container xs={8}>
+   <Grid item container direction='row' px='80px' gap='20px'>
+    <Grid item container xs={8.5}>
      {
       data?.map((items: ArticleData) => <PreviewCard key={items.id} article={items} />)
      }
     </Grid>
-    <Grid item container xs={4}>
-
+    <Grid item container xs={3.3} className='height--fit-content'>
+     {
+      DUMMY_DATA.map(({ id, title, data }, index) => (
+       <Grid item container key={id} direction='column' borderBottom={`1px solid ${theme.palette.primary.light}`}>
+        <Box mb='32px' mt={index ? '32px' : '0px'}>
+         <Typography label={title} variant='body1' fontSize='20px' fontWeight='600' />
+         {
+          data.map((item) => <Popular key={item.id} item={item} />)
+         }
+         <Grid item container justifyContent='end'>
+          <Button label='View More'/>
+         </Grid>
+        </Box>
+       </Grid>
+      ))
+     }
     </Grid>
    </Grid>
   </Grid>

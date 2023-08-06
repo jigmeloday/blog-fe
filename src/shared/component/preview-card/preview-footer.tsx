@@ -7,6 +7,7 @@ import { useCreateArticleLikeMutation, useDestroyArticleLikeMutation } from '@/a
 import { PreviewFooterProps } from '@/shared/component/preview-card/model/preview.model';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
+import { theme } from '../../../../styles/theme';
 
 function PreviewFooter (props: PreviewFooterProps  ){
  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -48,16 +49,16 @@ function PreviewFooter (props: PreviewFooterProps  ){
   <>
    <Grid item container xs={6}>
     <Grid item container alignItems='center' gap='10px' xs='auto'>
-     <Icon iconName={ liked ? 'favorite' : 'favorite_outlined'} color={liked? '#0079A2' : ''}
+     <Icon iconName={ liked ? 'favorite' : 'favorite_outlined'} color={liked? theme.palette.primary.main : ''}
       className='cursor--pointer' click={() => likeAction(props.article_id)} />
      <Typography label={likeCount} variant='caption' />
     </Grid>
     <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
-     <Icon iconName='mode_comment_none' className='cursor--pointer' />
+     <Icon iconName='comment_none' className='cursor--pointer' />
      <Typography label={props?.comment_count} variant='caption' />
     </Grid>
     <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
-     <Icon iconName='shared' className='cursor--pointer' />
+     <Icon iconName='share' className='cursor--pointer' />
     </Grid>
    </Grid>
    <Grid item container justifyContent='end' xs={6}>
