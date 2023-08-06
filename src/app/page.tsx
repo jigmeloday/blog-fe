@@ -9,12 +9,12 @@ import { useState } from 'react';
 import PreviewCard from '@/shared/component/preview-card/preview-card';
 import { useGetArticleByIDQuery } from '@/app/services/api/article.slice';
 import { ArticleData } from '@/shared/model/common.model';
-import PopularOtters from '@/shared/component/home-side-items/popular-otters/popular-otters';
 import Typography from '@/shared/component/typography/typography';
 import { DUMMY_DATA } from '@/shared/constant/shared.constant';
 import { theme } from '../../styles/theme';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
+import Popular from '@/shared/component/home-side-items/popular';
 
 export default function Home () {
  const [active, setActive] = useState('all');
@@ -57,7 +57,7 @@ export default function Home () {
         <Box mb='32px' mt={index ? '32px' : '0px'}>
          <Typography label={title} variant='body1' fontSize='20px' fontWeight='600' />
          {
-          data.map((item) => <PopularOtters key={item.id} item={item} />)
+          data.map((item) => <Popular key={item.id} item={item} />)
          }
          <Grid item container justifyContent='end'>
           <Button label='View More'/>
