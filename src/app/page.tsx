@@ -13,16 +13,22 @@ import PopularOtters from '@/shared/component/home-side-items/popular-otters/pop
 import Typography from '@/shared/component/typography/typography';
 import { DUMMY_DATA } from '@/shared/constant/shared.constant';
 import { theme } from '../../styles/theme';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
 
 export default function Home () {
  const [active, setActive] = useState('all');
  const {data} = useGetArticleByIDQuery<ArticleData[]>();
+ const user = getCookie('authentication');
+ const route = useRouter();
  return (
   <Grid container>
    <Header/>
    <Grid item container px='80px' my='24px'>
     <SubHeader item container direction='row' py='8px' alignItems='center'>
-     <Button label='New Post' startIcon={<Icon iconName='add' color='primary.main' />} />
+     <Button click={() => {
+      !user && route.push('/login');
+     }} label='New Post' startIcon={<Icon iconName='add' color='primary.main' />} />
      <Grid item container ml='80px' xs='auto'>
       {
        FILTER_CHIP.map(({ label, value }, index) => (
