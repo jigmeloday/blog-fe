@@ -13,7 +13,7 @@ export const articleAPI = createApi({
    query: () => '/articles',
   }),
   getArticleByID: builder.query({
-   query: () => '/articles',
+   query: (id) => `/articles/${id}`,
   }),
   createArticleLike: builder.mutation({
    query (body) {

@@ -6,9 +6,10 @@ import Typography from '@/shared/component/typography/typography';
 import PreviewFooter from '@/shared/component/preview-card/preview-footer';
 import { ArticleData } from '@/shared/model/common.model';
 import { dateFormat } from '@/shared/utils/utilities';
+import { useRouter } from 'next/navigation';
 
 function PreviewCard (props: { article: ArticleData }) {
- 
+ const route = useRouter();
  return(
   <Grid item container direction='row' py='24px' borderBottom='1px solid var(--primary-blue-50, #E6F2F6)' mb='44px'>
    <Grid item container xs={12}>
@@ -34,7 +35,9 @@ function PreviewCard (props: { article: ArticleData }) {
      <Box my='12px' fontSize='16px' fontWeight='300' lineHeight='24px'>
       {props?.article?.body}
      </Box>
-     <Typography label='Read More' variant='body1' fontSize='16px' className='cursor--pointer' fontWeight='500' />
+     <Typography click={() => route.push(`/article/${props.article.id}`) }
+      label='Read More' variant='body1' 
+      fontSize='16px' className='cursor--pointer' fontWeight='500' />
     </Grid>
     <Grid item container direction='row' alignItems='center' xs={12}>
      <PreviewFooter comment_count={props.article.comment_count}
