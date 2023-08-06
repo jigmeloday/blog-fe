@@ -18,6 +18,7 @@ import {
 } from '@/app/(auth)/constant/auth.constant';
 import Dropdown from '@/shared/component/dropdown/dropdown';
 import { useRouter } from 'next/navigation';
+import { setCookie } from 'cookies-next';
 
 function AuthForm (props: { type?: string, setEmail?: any }) {
  const router = useRouter();
@@ -30,7 +31,11 @@ function AuthForm (props: { type?: string, setEmail?: any }) {
  const [ register, { data: registration } ] = useRegistrationMutation();
 
  useEffect(() => {
-  loginData && router.push('/');
+  if ( loginData ) {
+   setCookie('authenticated', loginData);
+   loginData && router.push('/');
+  }
+
   if ( registration ) {
    props?.setEmail(email);
   }

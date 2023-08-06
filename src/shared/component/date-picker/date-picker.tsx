@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
-import { DatePickerProps } from '@/app/shared/components/date-picker/model/date-picker.model';
 import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePickerProps } from '@/shared/component/date-picker/model/date-picker.model';
 
 
 

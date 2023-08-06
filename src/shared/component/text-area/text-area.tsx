@@ -1,5 +1,5 @@
 import { TextareaAutosize } from '@mui/material';
-import { TextAreaProps } from '@/app/shared/components/text-area/model/text-area.model';
+import { TextAreaProps } from '@/shared/component/text-area/model/text-area.model';
 
 export function TextArea ( props: TextAreaProps ): JSX.Element {
  return (
