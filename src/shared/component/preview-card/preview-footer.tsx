@@ -44,11 +44,11 @@ function PreviewFooter (props: PreviewFooterProps  ){
      <Typography label={likeCount} variant='caption' />
     </Grid>
     <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
-     <Icon iconName='mode_comment_none' className='cursor--pointer' />
+     <Icon iconName='comment_none' className='cursor--pointer' />
      <Typography label={props?.comment_count} variant='caption' />
     </Grid>
     <Grid item container alignItems='center' gap='10px' xs='auto' ml='34px'>
-     <Icon iconName='shared' className='cursor--pointer' />
+     <Icon iconName='share' className='cursor--pointer' />
     </Grid>
    </Grid>
    <Grid item container justifyContent='end' xs={6}>
