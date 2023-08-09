@@ -3,7 +3,7 @@ import Icon from '@/shared/component/icon/icon';
 import Typography from '@/shared/component/typography/typography';
 import Button from '@/shared/component/button/button.component';
 import { useState } from 'react';
-import { useCreateArticleLikeMutation, useDestroyArticleLikeMutation } from '@/app/services/api/article.slice';
+import { useCreateArticleLikeMutation, useDestroyArticleLikeMutation } from '@/app/services/api/article.api';
 import { PreviewFooterProps } from '@/shared/component/preview-card/model/preview.model';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';

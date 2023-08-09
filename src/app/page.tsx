@@ -7,18 +7,18 @@ import Icon from '@/shared/component/icon/icon';
 import { FILTER_CHIP } from '@/shared/component/header/constant/header.constant';
 import { useState } from 'react';
 import PreviewCard from '@/shared/component/preview-card/preview-card';
-import { useGetArticleByIDQuery } from '@/app/services/api/article.slice';
-import { ArticleData } from '@/shared/model/common.model';
+import { useGetArticleQuery } from '@/app/services/api/article.api';
 import Typography from '@/shared/component/typography/typography';
 import { DUMMY_DATA } from '@/shared/constant/shared.constant';
 import { theme } from '../../styles/theme';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import Popular from '@/shared/component/home-side-items/popular';
+import { ArticleModel } from '@/app/services/models/article.model';
 
 export default function Home () {
  const [active, setActive] = useState('all');
- const {data} = useGetArticleByIDQuery<ArticleData[]>();
+ const {data} = useGetArticleQuery<ArticleModel[]>();
  const user = getCookie('authentication');
  const route = useRouter();
  return (
@@ -47,7 +47,7 @@ export default function Home () {
    <Grid item container direction='row' px='80px' gap='20px'>
     <Grid item container xs={8.5}>
      {
-      data?.map((items: ArticleData) => <PreviewCard key={items.id} article={items} />)
+      data?.map((items: ArticleModel) => <PreviewCard key={items.id} article={items} />)
      }
     </Grid>
     <Grid item container xs={3.3} className='height--fit-content'>
