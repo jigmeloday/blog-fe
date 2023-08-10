@@ -9,16 +9,19 @@ import { useState } from 'react';
 import PreviewCard from '@/shared/component/preview-card/preview-card';
 import { useGetArticleQuery } from '@/app/services/api/article.api';
 import Typography from '@/shared/component/typography/typography';
-import { DUMMY_DATA } from '@/shared/constant/shared.constant';
 import { theme } from '../../styles/theme';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import Popular from '@/shared/component/home-side-items/popular';
 import { ArticleModel } from '@/app/services/models/article.model';
+import { useGetPopularArticleQuery, useGetPopularOtterQuery } from '@/app/services/api/get-popular.api';
+import { UserModel } from '@/app/services/models/users.model';
 
 export default function Home () {
  const [active, setActive] = useState('all');
  const {data} = useGetArticleQuery<ArticleModel[]>();
+ const {data:otter} = useGetPopularOtterQuery<UserModel[]>();
+ const {data:whisper} = useGetPopularArticleQuery<ArticleModel[]>();
  const user = getCookie('authentication');
  const route = useRouter();
  return (
@@ -51,21 +54,39 @@ export default function Home () {
      }
     </Grid>
     <Grid item container xs={3.3} className='height--fit-content'>
-     {
-      DUMMY_DATA.map(({ id, title, data }, index) => (
-       <Grid item container key={id} direction='column' borderBottom={`1px solid ${theme.palette.primary.light}`}>
-        <Box mb='32px' mt={index ? '32px' : '0px'}>
-         <Typography label={title} variant='body1' fontSize='20px' fontWeight='600' />
-         {
-          data.map((item) => <Popular key={item.id} item={item} />)
-         }
-         <Grid item container justifyContent='end'>
-          <Button label='View More'/>
-         </Grid>
-        </Box>
+     <Grid item container direction='column' borderBottom={`1px solid ${theme.palette.primary.light}`}>
+      <Box mb='32px'>
+       <Typography label='Popular Otter' variant='body1' fontSize='20px' fontWeight='600' />
+       {
+        otter?.map((item) => <Popular key={item.id} item={item} />)
+       }
+       <Grid item container justifyContent='end'>
+        <Button label='View More'/>
        </Grid>
-      ))
-     }
+      </Box>
+     </Grid>
+     <Grid item container direction='column' borderBottom={`1px solid ${theme.palette.primary.light}`}>
+      <Box mb='32px' mt='32px'>
+       <Typography label='Popular Whispers' variant='body1' fontSize='20px' fontWeight='600' />
+       {
+        whisper?.map((item) => <Popular key={item.id} item={item} />)
+       }
+       <Grid item container justifyContent='end'>
+        <Button label='View More'/>
+       </Grid>
+      </Box>
+     </Grid>
+     <Grid item container direction='column' borderBottom={`1px solid ${theme.palette.primary.light}`}>
+      <Box mb='32px' mt='32px'>
+       <Typography label='Top Followers' variant='body1' fontSize='20px' fontWeight='600' />
+       {/*{*/}
+       {/* data.map((item) => <Popular key={item.id} item={item} />)*/}
+       {/*}*/}
+       <Grid item container justifyContent='end'>
+        <Button label='View More'/>
+       </Grid>
+      </Box>
+     </Grid>
     </Grid>
    </Grid>
   </Grid>
