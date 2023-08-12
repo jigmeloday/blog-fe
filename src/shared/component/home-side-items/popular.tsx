@@ -42,7 +42,8 @@ export default function Popular ( props: {item: any}) {
     </Grid>
    </Grid>
    <Grid item container xs={12} px='64px' mt='4px'>
-    <Button click={() => followAction()} label='Follow' variant='outlined' />
+    <Button click={() => followAction()} label={props.item.following? 'Unfollow': 'Follow'}
+            variant={props.item.following? 'contained' : 'outlined'} />
    </Grid>
   </Grid>
  );
