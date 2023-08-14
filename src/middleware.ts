@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { hasCookie } from 'cookies-next';
 
 export function middleware (request: NextRequest) {
+ const auth = ['/login', '/register', '/forgot-password'];
  const test = hasCookie('authenticated');
  if ( request.url.includes('/profile') && test ) {
   return  NextResponse.redirect(new URL('/login', request.url));
  }
- if ( request.url.includes('/login') && !test ) {
+ if ( auth.some(keyword => request.url.includes(keyword)) && !test ) {
   return NextResponse.redirect(new URL('/', request.url));
  }
 }
