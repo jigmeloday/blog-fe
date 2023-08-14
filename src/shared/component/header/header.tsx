@@ -7,7 +7,7 @@ import Icon from '@/shared/component/icon/icon';
 import profile from '../../../../public/profile/profile.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { getCookie } from 'cookies-next';
+import { hasCookie } from 'cookies-next';
 import Button from '@/shared/component/button/button.component';
 import { useRouter } from 'next/navigation';
 
@@ -15,9 +15,10 @@ export default function Header () {
  const [user, setUser] = useState<any>();
  const route = useRouter();
  useEffect(() => {
-  const user = getCookie('authenticated');
+  const user = hasCookie('authenticated');
   setUser(user);
  }, []);
+
  return (
   <CustomHeader container item direction='row' justifyContent='center' alignItems='center'>
    <Grid item container direction='row' xs={6}>

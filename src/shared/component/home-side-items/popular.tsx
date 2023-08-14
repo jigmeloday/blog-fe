@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import image from '../../../../public/profile/dummy-images/photo-1494790108377-be9c29b29330.jpg';
 
 export default function Popular ( props: {item: any}) {
- const [follow, setFollow] = useState(false);
+ const [follow, setFollow] = useState(props.item.following);
  const user = getCookie('authenticated');
  const router = useRouter();
  const followAction = () => {
@@ -42,8 +42,9 @@ export default function Popular ( props: {item: any}) {
     </Grid>
    </Grid>
    <Grid item container xs={12} px='64px' mt='4px'>
-    <Button click={() => followAction()} label={props.item.following? 'Unfollow': 'Follow'}
-            variant={props.item.following? 'contained' : 'outlined'} />
+    <Button
+     click={() => followAction()} label={follow? 'Unfollow': 'Follow'}
+     variant={follow? 'contained' : 'outlined'} />
    </Grid>
   </Grid>
  );
