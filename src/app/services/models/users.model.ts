@@ -4,7 +4,8 @@ export interface UserModel {
     email: string
     follower_count: number
     following_count: number
-    gender: string
+    gender: string,
+    profile_url: string
     id: number
     name: string
     updated_at: string

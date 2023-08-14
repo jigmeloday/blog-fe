@@ -44,6 +44,12 @@ export const authAPI = createApi({
     };
    }
   }),
+  signOut: builder.mutation({
+   query: () => ({
+    url: 'users/sign_out',
+    method: 'DELETE'
+   })
+  }),
   isAuthenticated: builder.query({
    query: () => 'users/authenticated'
   })
@@ -55,7 +61,8 @@ export const {
  useRegistrationMutation,
  useConfirmationMutation,
  useResendConfirmationMutation,
- useIsAuthenticatedQuery
+ useIsAuthenticatedQuery,
+ useSignOutMutation
 } = authAPI;
 
 

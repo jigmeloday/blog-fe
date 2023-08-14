@@ -1,26 +1,46 @@
 'use client';
 import { CustomHeader, LogoContainer, ProfileContainer } from '@/shared/component/header/style/header.style';
-import { Badge, Box, Grid } from '@mui/material';
+import { Badge, Box, Grid, Menu, MenuItem } from '@mui/material';
 import Search from '@/shared/component/search/search';
 import { HEADER_ICON } from '@/shared/component/header/constant/header.constant';
 import Icon from '@/shared/component/icon/icon';
-import profile from '../../../../public/profile/profile.png';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { setCookie } from 'cookies-next';
 import Button from '@/shared/component/button/button.component';
 import { useRouter } from 'next/navigation';
-import { useIsAuthenticatedQuery } from '@/app/services/api/auth.api';
+import { useIsAuthenticatedQuery, useSignOutMutation } from '@/app/services/api/auth.api';
+import { useGetOtterQuery } from '@/app/services/api/user.api';
+import { UserModel } from '@/app/services/models/users.model';
+import profile from '../../../../public/profile/profile.png';
 
 export default function Header () {
+ const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
  const [user, setUser] = useState<any>();
+ const [skip, setSkip] = useState<boolean>(true);
  const { data:isAuthenticated } = useIsAuthenticatedQuery();
+ const [signOut ] = useSignOutMutation();
+ const {} = useGetOtterQuery<UserModel>(undefined,{ skip });
+ const open = Boolean(anchorEl as unknown);
  const route = useRouter();
  useEffect(() => {
   setUser(isAuthenticated);
   setCookie('authenticated',isAuthenticated);
-  
+  if ( isAuthenticated ) {
+   setSkip(false);
+  }
  }, [isAuthenticated]);
+ const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  setAnchorEl(event.currentTarget);
+ };
+ const handleClose = () => {
+  setAnchorEl(null);
+ };
+ const userSignOut = () => {
+  signOut();
+  route.push('/login');
+ };
+
  return (
   <CustomHeader container item direction='row' justifyContent='center' alignItems='center'>
    <Grid item container direction='row' xs={6}>
@@ -44,9 +64,23 @@ export default function Header () {
        ))
       }
       <Grid item alignItems='center'>
-       <ProfileContainer alignItems='center' >
-        <Image src={profile} alt='profile' height={60} width={40}/>
+       <ProfileContainer alignItems='center' onClick={handleClick}>
+        <Image src={ profile}
+         priority alt='profile' height={60} width={40}/>
        </ProfileContainer>
+       <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+         'aria-labelledby': 'basic-button',
+        }}
+       >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={userSignOut}>Logout</MenuItem>
+       </Menu>   
       </Grid>
      </> : <Button click={() => route.push('/login')} label='login' variant='outlined'/>
     }
