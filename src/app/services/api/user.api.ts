@@ -10,13 +10,8 @@ export const userAPI = createApi({
   credentials: 'include'
  }as FetchBaseQueryArgs),
  endpoints: (builder: EndpointBuilder<any, any, any>) => ({
-  getOtter: builder.mutation<UserModel[], string>({
-   query () {
-    return {
-     url: 'users/profile',
-     method: 'GET'
-    };
-   }
+  getOtter: builder.query<UserModel[], string>({
+   query: () =>  'users/profile',
   }),
   // getPopularArticle: builder.query({
   //     query: () => '/articles/popular',
@@ -43,5 +38,5 @@ export const userAPI = createApi({
 });
 
 export const {
- useGetOtterMutation
+ useGetOtterQuery
 } = userAPI;
