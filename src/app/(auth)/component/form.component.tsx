@@ -8,7 +8,6 @@ import Checkbox from '@/shared/component/checkbox/checkbox.component';
 import { LOGIN_SCHEMA, REGISTRATION_SCHEMA } from '@/app/(auth)/services/schema/schema.service';
 import { useEffect, useState } from 'react';
 import Icon from '@/shared/component/icon/icon';
-import { useLoginUserMutation, useRegistrationMutation } from '@/app/(auth)/services/api-service/api-service';
 import {
  GENDER,
  LOGIN_FORM,
@@ -19,6 +18,7 @@ import {
 import Dropdown from '@/shared/component/dropdown/dropdown';
 import { useRouter } from 'next/navigation';
 import { setCookie } from 'cookies-next';
+import { useLoginUserMutation, useRegistrationMutation } from '@/app/services/api/auth.api';
 
 function AuthForm (props: { type?: string, setEmail?: any }) {
  const router = useRouter();

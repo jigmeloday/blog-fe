@@ -43,6 +43,9 @@ export const authAPI = createApi({
      body
     };
    }
+  }),
+  isAuthenticated: builder.query({
+   query: () => 'users/authenticated'
   })
  }),
 });
@@ -51,7 +54,8 @@ export const {
  useLoginUserMutation,
  useRegistrationMutation,
  useConfirmationMutation,
- useResendConfirmationMutation
+ useResendConfirmationMutation,
+ useIsAuthenticatedQuery
 } = authAPI;
 
 
