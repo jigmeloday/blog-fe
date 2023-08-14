@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { FetchBaseQueryArgs } from '@reduxjs/toolkit/dist/query/fetchBaseQuery';
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
+import { ArticleModel } from '@/app/services/models/article.model';
 
 export const articleAPI = createApi({
  reducerPath: 'articleAPI',
@@ -9,7 +10,7 @@ export const articleAPI = createApi({
   credentials: 'include'
  }as FetchBaseQueryArgs),
  endpoints: (builder: EndpointBuilder<any, any, any>) => ({
-  getArticle: builder.query<any, string>({
+  getArticle: builder.query<ArticleModel[], string>({
    query: () => '/articles',
   }),
   getArticleByID: builder.query({

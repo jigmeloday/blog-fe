@@ -4,11 +4,11 @@ import img from '../../../../public/profile/profile.png';
 import { ProfileImage } from '@/shared/component/preview-card/style/preview.style';
 import Typography from '@/shared/component/typography/typography';
 import PreviewFooter from '@/shared/component/preview-card/preview-footer';
-import { ArticleData } from '@/shared/model/common.model';
 import { dateFormat } from '@/shared/utils/utilities';
 import { useRouter } from 'next/navigation';
+import { ArticleModel } from '@/app/services/models/article.model';
 
-function PreviewCard (props: { article: ArticleData }) {
+function PreviewCard (props: { article: ArticleModel }) {
  const route = useRouter();
  return(
   <Grid item container direction='row' py='24px' borderBottom='1px solid var(--primary-blue-50, #E6F2F6)' mb='44px'>
@@ -36,7 +36,7 @@ function PreviewCard (props: { article: ArticleData }) {
       {props?.article?.body}
      </Box>
      <Typography click={() => route.push(`/article/${props.article.id}`) }
-      label='Read More' variant='body1' 
+      label='Read More' variant='body1'
       fontSize='16px' className='cursor--pointer' fontWeight='500' />
     </Grid>
     <Grid item container direction='row' alignItems='center' xs={12}>

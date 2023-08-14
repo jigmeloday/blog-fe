@@ -7,17 +7,25 @@ import Icon from '@/shared/component/icon/icon';
 import profile from '../../../../public/profile/profile.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { getCookie } from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import Button from '@/shared/component/button/button.component';
 import { useRouter } from 'next/navigation';
+import { useIsAuthenticatedQuery } from '@/app/services/api/auth.api';
+import { useGetOtterMutation } from '@/app/services/api/user.api';
 
 export default function Header () {
  const [user, setUser] = useState<any>();
+ const { data:isAuthenticated } = useIsAuthenticatedQuery();
+ const [data] = useGetOtterMutation();
  const route = useRouter();
  useEffect(() => {
-  const user = getCookie('authenticated');
-  setUser(user);
- }, []);
+  setUser(isAuthenticated);
+  setCookie('authenticated',isAuthenticated);
+  if ( isAuthenticated ) {
+   data();
+  }
+ }, [isAuthenticated]);
+
  return (
   <CustomHeader container item direction='row' justifyContent='center' alignItems='center'>
    <Grid item container direction='row' xs={6}>

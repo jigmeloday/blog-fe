@@ -23,6 +23,10 @@ export const CustomSearch = styled(TextField)(
     width: 300px;
     border-radius: 66px;
   }
+  & .MuiInputBase-input {
+    height: 18%;
+    background: transparent;
+  }
 `);
 
 export const ProfileContainer = styled(Box)(
