@@ -5,8 +5,8 @@ import Search from '@/shared/component/search/search';
 import { HEADER_ICON } from '@/shared/component/header/constant/header.constant';
 import Icon from '@/shared/component/icon/icon';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { setCookie } from 'cookies-next';
+import React, { useEffect, useRef, useState } from 'react';
+import { getCookie } from 'cookies-next';
 import Button from '@/shared/component/button/button.component';
 import { useRouter } from 'next/navigation';
 import { useIsAuthenticatedQuery, useSignOutMutation } from '@/app/services/api/auth.api';
@@ -18,18 +18,25 @@ export default function Header () {
  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
  const [user, setUser] = useState<any>();
  const [skip, setSkip] = useState<boolean>(true);
- const { data:isAuthenticated } = useIsAuthenticatedQuery();
- const [signOut ] = useSignOutMutation();
+ const timestampRef = useRef(Date.now()).current;
+ const { data:isAuthenticated } = useIsAuthenticatedQuery({sessionId: timestampRef});
+ const [signOut, { data:signOutSuccess } ] = useSignOutMutation();
  const {} = useGetOtterQuery<UserModel>(undefined,{ skip });
  const open = Boolean(anchorEl as unknown);
  const route = useRouter();
  useEffect(() => {
-  setUser(isAuthenticated);
-  setCookie('authenticated',isAuthenticated);
+  setUser(getCookie('authenticated'));
+  // setCookie('authenticated',isAuthenticated);
   if ( isAuthenticated ) {
    setSkip(false);
   }
  }, [isAuthenticated]);
+
+ useEffect(() => {
+  if ( signOutSuccess ) {
+   route.push('/login');
+  }
+ }, [signOutSuccess]);
  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
   setAnchorEl(event.currentTarget);
  };
@@ -38,7 +45,6 @@ export default function Header () {
  };
  const userSignOut = () => {
   signOut();
-  route.push('/login');
  };
 
  return (
