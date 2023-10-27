@@ -1,1 +1,1 @@
-watinging for UX
+waitinging for UX
