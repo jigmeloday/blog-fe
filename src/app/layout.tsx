@@ -21,7 +21,11 @@ export default function RootLayout ({
      rel="stylesheet"/>
    </head>
    <body className={inter.className}>
-    {children}
+    <div className='container'>
+     <div className='wrapper'>
+      {children}
+     </div>
+    </div>
    </body>
   </html>
  );

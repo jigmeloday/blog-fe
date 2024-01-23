@@ -1,27 +1,60 @@
-@import '../../styles/_utilities.css';
+:root {
+    --bg:white;
+    --textColor: black;
+    --softBg: #f0f0f0;
+    --softColor: #626262;
+}
 
 *{
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
+body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
 .container{
-  border: none;
+    min-height: 100vh;
+    background-color: var(--bg);
+    color: var(--textColor);
 }
 
-.character{
-  border: none;
-  background: transparent;
-  box-shadow: 0px 2px 4px 0px rgba(138, 193, 212, 0.24);
-  border-radius: 4px;
+.wrapper{
+    max-width: 1536px ;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rebeccapurple;
+    padding: 0 80px;
 }
 
-.character--inactive {
-  border: none;
-  box-shadow: 0px 2px 4px 0px rgba(138, 193, 212, 0.24);
-  border-radius: 4px;
+@media screen and (max-width: 1536px) {
+    .wrapper{
+        max-width: 1366px;
+    }
 }
 
-.character--selected {
-  color: #0079A2;
-  border: #0079A2;
+@media screen and (max-width: 1280px) {
+    .wrapper{
+        max-width: 1024px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper{
+        max-width: 768px;
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .wrapper{
+        max-width: 475px;
+    }
 }
