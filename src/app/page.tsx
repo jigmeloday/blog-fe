@@ -9,10 +9,10 @@ export default function Home () {
   <div className={styled.container}>
    <Featured/>
    <CategoryList/>
-      <div className={styled.content}>
-          <CardList />
-          <Menu />
-      </div>
+   <div className={styled.content}>
+    <CardList />
+    <Menu />
+   </div>
   </div>
  );
 }

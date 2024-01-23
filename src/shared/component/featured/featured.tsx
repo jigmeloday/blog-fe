@@ -1,6 +1,6 @@
 function Feature (){
  return(
-     <>Feature</>
+  <>Feature</>
  );
 }
 
