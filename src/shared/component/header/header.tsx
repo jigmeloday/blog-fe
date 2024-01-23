@@ -1,6 +1,8 @@
 import styles from './header.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+// import ThemeToggle from '@/shared/component/theme-toggle/theme-toggle';
+import AuthLinks from '@/shared/component/auth-links/auth-links';
 
 export default function Header () {
 
@@ -18,7 +20,7 @@ export default function Header () {
     <Link href="/" className={styles.link}>Homepage</Link>
     <Link href="/" className={styles.link}>Contact</Link>
     <Link href="/" className={styles.link}>About</Link>
-    {/*<AuthLinks />*/}
+    <AuthLinks />
    </div>
   </div>
  );
