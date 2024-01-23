@@ -2,9 +2,9 @@ import styles from './footer.module.css';
 
 function Footer () {
  return(
-     <div className={styles.container}>
+  <div className={styles.container}>
          hey
-     </div>
+  </div>
  );
 }
 
