@@ -1,11 +1,11 @@
 import { TextField } from '@mui/material';
 import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePickerProps } from '@/shared/component/date-picker/model/date-picker.model';
+import { DatePickerProps } from '@/shared/component/categorylist/model/date-picker.model';
 
 
 
-export function DatePicker ( props: DatePickerProps ): JSX.Element {
+export function Categorylist ( props: DatePickerProps ): JSX.Element {
 
  return (
   <LocalizationProvider dateAdapter={ AdapterDayjs }>
@@ -23,4 +23,4 @@ export function DatePicker ( props: DatePickerProps ): JSX.Element {
  );
 }
 
-export default DatePicker;
+export default Categorylist;

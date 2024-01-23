@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { DropdownProps } from '@/shared/component/dropdown/drop-down/drop-down.model';
+import { DropdownProps } from '@/shared/component/menu/drop-down/drop-down.model';
 
-export function Dropdown ( props: DropdownProps ) {
+export function Menu ( props: DropdownProps ) {
 
  return (
   <FormControl fullWidth>
@@ -19,4 +19,4 @@ export function Dropdown ( props: DropdownProps ) {
  );
 }
 
-export default Dropdown;
+export default Menu;

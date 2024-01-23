@@ -1,7 +1,7 @@
 import { SxProps, Theme } from '@mui/material';
 import { Button as MatButton } from '@mui/material/';
 import { styled } from '@mui/material/styles';
-import { ButtonProps } from '@/shared/component/button/model/button.model';
+import { ButtonProps } from '@/shared/component/featured/model/button.model';
 
 const CustomButton = styled(MatButton)(
  ({ theme, }) => `
