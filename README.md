@@ -1,4 +1,4 @@
-watinging for UX
+waitinging for UX
 
 feel free to connect with me
 https://jigmeloday.com
